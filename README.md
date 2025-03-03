@@ -1,12 +1,40 @@
-# React + Vite
+# Clone de Twitter - Projet React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce projet est une application web développée en React, reproduisant les fonctionnalités essentielles de Twitter. Il permet aux utilisateurs de publier des tweets, suivre d'autres utilisateurs, aimer des publications et recevoir des notifications.
 
-Currently, two official plugins are available:
+## Fonctionnalités principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Authentification** : Inscription et connexion avec une base de données locale (`json-server-auth`), validation des champs et gestion des erreurs.
+- **Fil d'actualité** : Affichage des tweets par ordre chronologique, par popularité et affichage des tweets des utilisateurs suivis.
+- **Gestion du profil** : Affichage des tweets d'un utilisateur sur sa page de profil, suivi/désabonnement des utilisateurs.
+- **CRUD sur les tweets** : Création, lecture, mise à jour et suppression de tweets en temps réel.
+- **Follow/Followers** : Possibilité de suivre un utilisateur et de voir la liste de ses abonnés.
+- **Notifications** : Système de notifications pour les nouveaux abonnés et les likes sur les tweets.
+- **Retweets et commentaires** (Bonus) : Fonctionnalité de retweet, possibilité de commenter les tweets et de liker les commentaires.
 
-## Expanding the ESLint configuration
+## Technologies utilisées
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Framework** : [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Bibliothèques** :
+  - [React Toastify](https://fkhadra.github.io/react-toastify/) (notifications)
+  - [MUI](https://mui.com/) (composants UI)
+  - [React Icons](https://react-icons.github.io/react-icons/) (icônes)
+  - [React Router DOM](https://reactrouter.com/) (gestion des routes)
+  - [React Redux](https://react-redux.js.org/) (gestion d'état)
+  - [Tailwind CSS](https://tailwindcss.com/) (stylisation)
+  - [json-server](https://github.com/typicode/json-server) & [json-server-auth](https://www.npmjs.com/package/json-server-auth) (base de données et authentification)
+
+## Installation et démarrage
+
+1. **Installation des dépendances** :
+   ```sh
+   npm install
+
+2. **Lancement du serveur JSON** :
+```sh
+  ~/clone_twitter_react/db$ npm start
+```
+3. **Démarrage du projet React** :
+```sh
+  npm run dev
+
