@@ -27,9 +27,9 @@ Ce projet est une application web développée en React, reproduisant les foncti
 ## Installation et démarrage
 
 1. **Installation des dépendances** :
-   ```sh
-   npm install
-
+```sh
+    npm install
+```
 2. **Lancement du serveur JSON** :
 ```sh
   ~/clone_twitter_react/db$ npm start
@@ -37,4 +37,5 @@ Ce projet est une application web développée en React, reproduisant les foncti
 3. **Démarrage du projet React** :
 ```sh
   npm run dev
+```
 
