@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { loginAPI } from "../../../domains/authentitification/Auth.js";
+import { loginAPI } from "../../../domains/authentitification/auth.js";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { setIsConnected, setToken, setIsStayConnected } from "../../../shared/store/authSlice.js";
+import { setIsConnected, setToken, setIsStayConnected, setUserId } from "../../../shared/store/authSlice.js";
+import { showToastError } from "../../../shared/utils/Toast.jsx";
 
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Switch from '@mui/material/Switch';
-import { toast, ToastContainer } from "react-toastify";
-import { showToastError } from "../../../shared/utils/Toast.jsx";
-
+import { ToastContainer } from "react-toastify";
 
 function Formulaire() {
     const [email, setEmail] = useState("");
@@ -37,8 +35,6 @@ function Formulaire() {
             navigate('/');
         }
     }, [isConnected, navigate]); 
-    
-    
 
     const handleSubmit = async (event) => {
         event.preventDefault();

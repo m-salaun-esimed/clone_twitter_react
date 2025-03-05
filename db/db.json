@@ -11,11 +11,6 @@
       "id": 2
     },
     {
-      "email": "franck@gmail.com",
-      "password": "$2a$10$dowopaJ..lKmcfQbNYZJ/.8Au9ojbI6vItS0o2zumBUuxsvYpHsEW",
-      "id": 3
-    },
-    {
       "email": "jeremy@gmail.com",
       "password": "$2a$10$tyuM1UguUXYL7sNTRRDumOsZTQZffV6yqwkS0GFnriSKevYizt7sm",
       "id": 4
@@ -26,11 +21,6 @@
       "id": 5
     },
     {
-      "email": "Leana@gmail.com",
-      "password": "$2a$10$K4hb.u.qWQ9vBB.fV7Q3W.ocXBD2uppwRa1xv6upfHDo8MCVwheIq",
-      "id": 6
-    },
-    {
       "email": "test1@test.com",
       "password": "$2a$10$rrqjkIyzCt3/20mZgvx.Y.gjE8iDayNeIt73D3hAsU8mep40v9noi",
       "id": 7
@@ -39,96 +29,227 @@
       "email": "test2@gmail.com",
       "password": "$2a$10$GocmZz.pyszI4KRyYw4kAuvOXoSNyjo3iDtUBfuS0bdMoURTnn1mC",
       "id": 8
-    }
-  ],
-  "shoppingList": [
-    {
-      "id": 1,
-      "item": "Pain",
-      "idUser": 1
     },
     {
-      "id": 2,
-      "item": "Légumes",
-      "idUser": 1
-    },
-    {
-      "id": 3,
-      "item": "Lait",
-      "idUser": 1
-    },
-    {
-      "id": 4,
-      "item": "Œufs",
-      "idUser": 1
-    },
-    {
-      "token": null,
-      "id": 5
-    },
-    {
-      "token": null,
-      "id": 6
-    },
-    {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
-      "id": 7
-    },
-    {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
-      "id": 8
-    },
-    {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
+      "email": "franck@gmail.com",
+      "password": "$2a$10$KUJQ1uzx/6v4195jl6Gus.4OLMwrPHT2kMsTIoFINbqamx2ujS7VO",
       "id": 9
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
+      "email": "nathan@gmail.com",
+      "password": "$2a$10$JBtPwee4AyllmvQB3kLQ8.UYJyHzjN318o4GY3E.oJ2VMg6VkeRUG",
+      "date": "2025-03-05T08:23:31.606Z",
       "id": 10
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
+      "email": "leana@gmail.com",
+      "password": "$2a$10$gRDJ75c2C1uBGb2J4wpa4eSJgC6G9Ao1HPumvyL8t0MpL01paD5E.",
+      "date": "2025-03-05T08:26:29.919Z",
+      "id": 11
+    }
+  ],
+  "tweet": [
+    {
+      "id": 1,
+      "userId": 1,
+      "content": "test",
+      "date": "2025-03-03T12:30:00Z",
+      "comments": 5
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "content": "test2",
+      "date": "2025-03-03T14:00:00Z",
+      "comments": 16
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "content": "test3",
+      "date": "2025-03-03T16:15:00Z",
+      "comments": 100000
+    },
+    {
+      "userId": 1,
+      "content": "OUIIIIIIIIIIIIII",
+      "date": "2025-03-03T12:30:00Z",
+      "comments": 0,
+      "id": 6
+    },
+    {
+      "userId": "1",
+      "content": "test",
+      "date": "2025-03-03T14:03:29.782Z",
+      "comments": 0,
+      "id": 7
+    },
+    {
+      "userId": "1",
+      "content": "oui oui baguette",
+      "date": "2025-03-03T14:03:52.362Z",
+      "comments": 0,
+      "id": 8
+    },
+    {
+      "userId": "1",
+      "content": "non non",
+      "date": "2025-03-03T14:06:31.682Z",
+      "comments": 0,
+      "id": 9
+    },
+    {
+      "userId": "1",
+      "content": "hhhh",
+      "date": "2025-03-03T14:06:48.735Z",
+      "comments": 0,
+      "id": 10
+    },
+    {
+      "userId": "1",
+      "content": "jojo",
+      "date": "2025-03-03T14:07:50.996Z",
+      "comments": 0,
       "id": 11
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
+      "userId": "1",
+      "content": "tg jeremy",
+      "date": "2025-03-03T14:32:32.407Z",
+      "comments": 0,
       "id": 12
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
+      "userId": 1,
+      "content": "OUIIIIIIIIIIIIII",
+      "date": "2025-03-03T12:30:00Z",
+      "comments": 0,
       "id": 13
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
+      "userId": "1",
+      "content": "jeremy va te faire manger",
+      "date": "2025-03-03T15:15:26.263Z",
+      "comments": 0,
       "id": 14
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
+      "userId": "1",
+      "content": "Bonjour !",
+      "date": "2025-03-04T07:35:52.990Z",
+      "comments": 0,
       "id": 15
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
+      "userId": "9",
+      "content": "BONJOUR !",
+      "date": "2025-03-04T10:27:14.298Z",
+      "comments": 0,
       "id": 16
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
+      "userId": "1",
+      "content": "test ",
+      "date": "2025-03-05T08:19:53.874Z",
+      "comments": 0,
       "id": 17
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
+      "userId": "11",
+      "content": "SALUT X",
+      "date": "2025-03-05T12:48:19.447Z",
+      "likes": 0,
+      "comments": 0,
       "id": 18
+    }
+  ],
+  "Follows": [
+    {
+      "id": 1,
+      "followerId": 1,
+      "followedId": 2,
+      "requestDate": "2025-03-03T12:30:00Z"
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
-      "id": 19
+      "followerId": 6,
+      "followedId": 7,
+      "requestDate": "2025-03-03T12:30:00Z",
+      "id": 2
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
-      "id": 20
+      "followerId": "9",
+      "followedId": "1",
+      "requestDate": "2025-03-04T14:35:40.276Z",
+      "acceptDate": null,
+      "id": 3
     },
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdHRoaWV1QG1nYWlsLmNvbSIsImlhdCI6MTc0MDY2MjE5OSwiZXhwIjoxNzQwNjY1Nzk5LCJzdWIiOiIxIn0.PqDR_S18Cn-GvrteGtSo0UEH9aY3MOKZ15UKZWYh3hQ",
-      "id": 21
+      "followerId": "9",
+      "followedId": "2",
+      "requestDate": "2025-03-04T14:39:11.340Z",
+      "acceptDate": null,
+      "id": 4
+    },
+    {
+      "followerId": "1",
+      "followedId": "9",
+      "requestDate": "2025-03-04T14:46:05.733Z",
+      "acceptDate": null,
+      "id": 5
+    },
+    {
+      "followerId": "11",
+      "followedId": "9",
+      "requestDate": "2025-03-05T08:33:14.479Z",
+      "acceptDate": null,
+      "id": 6
+    }
+  ],
+  "likes": [
+    {
+      "tweetId": 16,
+      "userId": "1",
+      "id": 5
+    },
+    {
+      "tweetId": 17,
+      "userId": "1",
+      "id": 6
+    },
+    {
+      "tweetId": 15,
+      "userId": "1",
+      "id": 7
+    },
+    {
+      "tweetId": 2,
+      "userId": "1",
+      "id": 8
+    },
+    {
+      "tweetId": 17,
+      "userId": "11",
+      "id": 9
+    },
+    {
+      "tweetId": 16,
+      "userId": "11",
+      "id": 10
+    },
+    {
+      "tweetId": 15,
+      "userId": "11",
+      "id": 11
+    },
+    {
+      "tweetId": 3,
+      "userId": "11",
+      "id": 12
+    },
+    {
+      "tweetId": 18,
+      "userId": "11",
+      "id": 13
     }
   ]
 }

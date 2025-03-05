@@ -15,7 +15,7 @@ function Login() {
                 </h1>
             </div>
             <Formulaire />
-        </div>
+        </div>  
     );
 }
 

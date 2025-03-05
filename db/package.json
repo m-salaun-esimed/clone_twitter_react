@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node start_db.js"
+    "start": "json-server db.json -m ./node_modules/json-server-auth"
   },
   "author": "",
   "license": "ISC",

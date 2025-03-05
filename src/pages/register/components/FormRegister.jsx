@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { setIsConnected, setToken, setIsStayConnected } from "../../../shared/store/authSlice.js";
-import { registerApi } from "../../../domains/authentitification/Auth.js";
+import { registerApi } from "../../../domains/authentitification/auth.js";
 import { showToastError } from "../../../shared/utils/Toast.jsx"
 
 import Button from '@mui/material/Button';
@@ -15,6 +15,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Switch from '@mui/material/Switch';
 import { ToastContainer } from "react-toastify";
+import { jwtDecode } from "jwt-decode";
 
 function FormRegister() {
     const [email, setEmail] = useState("");
@@ -73,6 +74,8 @@ function FormRegister() {
             let response = await registerApi(email, password);
             dispatch(setIsStayConnected(isStayConnectedToggle));
             dispatch(setToken(response.accessToken));
+            const userId = jwtDecode(localStorage.getItem("accessToken")).sub;
+            dispatch(setUserId(userId))
             dispatch(setIsConnected(true));
         } catch (error) {
             showToastError(error.message);

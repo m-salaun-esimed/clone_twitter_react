@@ -15,7 +15,7 @@ export const showToastSuccess = (message) => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "white",
+            theme: "dark",
         }
     );
 };

@@ -23,8 +23,8 @@ const registerApi = async (email, password) => {
         if (existingUsers.data.length > 0) {
             throw new Error("Cet email est déjà utilisé.");
         }
-
-        const response = await dbUrl.post('users', { email, password });
+        const date = new Date().toISOString();
+        const response = await dbUrl.post('users', { email, password, date });
         return response.data;
     } catch (error) {
         console.error('Erreur lors de l\'inscription :', error.response?.data || error.message);

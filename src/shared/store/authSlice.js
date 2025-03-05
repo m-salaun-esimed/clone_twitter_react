@@ -1,16 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { jwtDecode } from 'jwt-decode';
 
 const AuthSlice = createSlice({
     name: 'auth',
     initialState: {
         user: null,
+        userId: localStorage.getItem("accessToken") ? jwtDecode(localStorage.getItem("accessToken")).sub : null,
         isStayConnected: localStorage.getItem("isStayConnected") === "true",
         isConnected: localStorage.getItem("isStayConnected") === "true"
             ? !!localStorage.getItem("accessToken")
             : !!sessionStorage.getItem("accessToken"),
         token: localStorage.getItem("isStayConnected") === "true"
             ? localStorage.getItem("accessToken")
-            : sessionStorage.getItem("accessToken")
+            : sessionStorage.getItem("accessToken"),
     },
     reducers: {
         setUser: (state, action) => {
@@ -33,9 +35,13 @@ const AuthSlice = createSlice({
         setIsStayConnected: (state, action) => {
             state.isStayConnected = action.payload;
             localStorage.setItem("isStayConnected", String(action.payload));
+        },
+        setUserId(state, action){
+            state.userId = action.payload;
+            console.log("dans setUserId: ", action.payload)
         }
     }
 });
 
 export default AuthSlice.reducer;
-export const { setUser, setIsConnected, setToken, setIsStayConnected } = AuthSlice.actions;
+export const { setUser, setIsConnected, setToken, setIsStayConnected, setUserId} = AuthSlice.actions;
