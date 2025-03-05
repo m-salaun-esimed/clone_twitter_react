@@ -94,7 +94,7 @@ const getTweetByUser = async (token, userId) => {
     }
 };
 
-const getTweetByUserAndLikeOrderByDesk = async (token, userId) => {
+const getTopLikedTweetsByUser = async (token, userId) => {
     try {
         const response = await dbUrl.get(`?userId=${userId}&_sort=likes&_order=desc`, {
             headers: {
@@ -108,4 +108,34 @@ const getTweetByUserAndLikeOrderByDesk = async (token, userId) => {
     }
 };
 
-export { getRecentTweets, postTweet, getTopLikedTweets, getTweetByUser, getTweetByUserAndLikeOrderByDesk, getTweetsFollowByOrderDesc };
+const deleteTweet = async (token, tweetId) => {
+    try {
+        const response = await dbUrl.delete(`${tweetId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Erreur lors de la suppression du tweet :', error.response?.data || error.message);
+        throw error;
+    }
+};
+
+const editTweet = async (token, tweetId, newContent) => {
+    try {
+        const response = await dbUrl.patch(`${tweetId}`, {
+            content: newContent,
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Erreur lors de la modification du tweet :', error.response?.data || error.message);
+        throw error;
+    }
+};
+
+export { getRecentTweets, postTweet, getTopLikedTweets, getTweetByUser, getTopLikedTweetsByUser, getTweetsFollowByOrderDesc, deleteTweet, editTweet };

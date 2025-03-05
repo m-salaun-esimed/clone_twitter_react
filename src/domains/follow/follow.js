@@ -91,4 +91,62 @@ const checkIfFollowApi = async (token, userIdfollower, userIdFollowed) => {
     }
 };
 
-export { counterFollower, counterFollowed, getFollowsIds, followApi, checkIfFollowApi };
+const unfollowApi = async (token, userIdfollower, userIdfollowed) => {
+    try {
+        const response = await dbUrl.get(`follows?followerId=${userIdfollower}&followedId=${userIdfollowed}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        if (response.data.length === 0) {
+            throw new Error('Relation de follow non trouvée');
+        }
+
+        const followId = response.data[0].id;
+
+        const deleteResponse = await dbUrl.delete(`follows/${followId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        console.log("Unfollow successful");
+        return deleteResponse.data;
+    } catch (error) {
+        console.error("Erreur lors de l'unfollow :", error.response?.data || error.message);
+        throw error;
+    }
+};
+
+const fecthFollowersApi = async (token, userId) => {
+    try {
+        const response = await dbUrl.get(`Follows?followedId=${userId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        return response;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des followers:', error);
+        throw error;
+    }
+}; 
+
+const fetchFollowingApi = async (token, userId) => {
+    try {
+        const response = await dbUrl.get(`Follows?followerId=${userId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        return response;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des following:', error);
+        throw error;
+    }
+};
+
+export { counterFollower, counterFollowed, getFollowsIds, followApi, checkIfFollowApi, unfollowApi, fecthFollowersApi, fetchFollowingApi };

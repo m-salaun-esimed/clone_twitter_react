@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 import { getName } from "../../../domains/user/user";
 import { Button } from "@mui/material";
 import { showToastSuccess, showToastError } from "../../../shared/utils/Toast"; // Ajout de showToastError
-import { counterFollowed, counterFollower, checkIfFollowApi, followApi } from "../../../domains/follow/follow";
+import { counterFollowed, counterFollower, checkIfFollowApi, followApi, unfollowApi  } from "../../../domains/follow/follow";
+import { useNavigate } from "react-router-dom";
 
 function UserProfile({ userId }) {
   const token = useSelector((state) => state.auth.token);
   const userIdSlice = useSelector((state) => state.auth.userId);
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const [isFollow, setIsFollow] = useState(false);
   const [followersCount, setFollowersCount] = useState(0);
@@ -70,11 +72,33 @@ function UserProfile({ userId }) {
     try {
       const response = await followApi(token, userIdSlice, userId);
       showToastSuccess(`Ami bien ajouté : ${email}`);
-      setIsFollow(true);  // Mettre à jour l'état pour afficher "Suivi"
+      setIsFollow(true);
     } catch (error) {
       console.error("Erreur lors de la demande de follow :", error);
     }
   }
+
+  const unfollow = async () => {
+    try {
+      const response = await unfollowApi(token, userIdSlice, userId);
+      showToastSuccess(`Ami bien supprimé : ${email}`);
+      setIsFollow(false);
+    } catch (error) {
+      console.error("Erreur lors de la demande de unfollow :", error);
+    }
+  }
+
+  const handleFollowersClick = () => {
+    if (userId === userIdSlice) {
+      navigate(`/followers/${userId}`);
+    }
+  };
+
+  const handleFollowingClick = () => {
+    if (userId === userIdSlice) {
+      navigate(`/following/${userId}`);
+    }
+  };
 
   return (
     <Fragment>
@@ -95,9 +119,9 @@ function UserProfile({ userId }) {
               <h2 className="text-xl font-bold mr-3">{email}</h2>
               {
                 userIdSlice === userId ? (
-                  ''
+                  ""
                 ) : isFollow ? (
-                  <span>Suivi</span>
+                  <Button variant="outlined" onClick={unfollow}>Désabonner</Button>
                 ) : (
                   <Button variant="outlined" onClick={follow}>Suivre</Button>
                 )
@@ -106,8 +130,18 @@ function UserProfile({ userId }) {
             {/* <p className="text-gray-500 text-sm mt-1">📅 A rejoint X en septembre 2017</p> */}
 
             <div className="mt-2 flex justify-center md:justify-start space-x-4 text-sm text-gray-400">
-              <span><strong className="text-white">{followersCount}</strong> abonnements</span>
-              <span><strong className="text-white">{followedCount}</strong> abonnés</span>
+              <button 
+                onClick={handleFollowingClick}
+                className={`hover:underline ${userId === userIdSlice ? 'cursor-pointer' : 'cursor-default'}`}
+              >
+                <span><strong className="text-white">{followersCount}</strong> abonnements</span>
+              </button>
+              <button 
+                onClick={handleFollowersClick}
+                className={`hover:underline ${userId === userIdSlice ? 'cursor-pointer' : 'cursor-default'}`}
+              >
+                <span><strong className="text-white">{followedCount}</strong> abonnés</span>
+              </button>
             </div>
           </div>
 

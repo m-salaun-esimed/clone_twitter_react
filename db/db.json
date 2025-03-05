@@ -51,7 +51,7 @@
   "tweet": [
     {
       "id": 1,
-      "userId": 1,
+      "userId": "1",
       "content": "test",
       "date": "2025-03-03T12:30:00Z",
       "comments": 5
@@ -65,7 +65,7 @@
     },
     {
       "id": 3,
-      "userId": 1,
+      "userId": "1",
       "content": "test3",
       "date": "2025-03-03T16:15:00Z",
       "comments": 100000
@@ -120,7 +120,7 @@
       "id": 12
     },
     {
-      "userId": 1,
+      "userId": "1",
       "content": "OUIIIIIIIIIIIIII",
       "date": "2025-03-03T12:30:00Z",
       "comments": 0,
@@ -134,25 +134,11 @@
       "id": 14
     },
     {
-      "userId": "1",
-      "content": "Bonjour !",
-      "date": "2025-03-04T07:35:52.990Z",
-      "comments": 0,
-      "id": 15
-    },
-    {
       "userId": "9",
       "content": "BONJOUR !",
       "date": "2025-03-04T10:27:14.298Z",
       "comments": 0,
       "id": 16
-    },
-    {
-      "userId": "1",
-      "content": "test ",
-      "date": "2025-03-05T08:19:53.874Z",
-      "comments": 0,
-      "id": 17
     },
     {
       "userId": "11",
@@ -203,23 +189,20 @@
       "requestDate": "2025-03-05T08:33:14.479Z",
       "acceptDate": null,
       "id": 6
+    },
+    {
+      "followerId": "1",
+      "followedId": "11",
+      "requestDate": "2025-03-05T13:33:01.211Z",
+      "acceptDate": null,
+      "id": 7
     }
   ],
   "likes": [
     {
-      "tweetId": 16,
-      "userId": "1",
-      "id": 5
-    },
-    {
       "tweetId": 17,
       "userId": "1",
       "id": 6
-    },
-    {
-      "tweetId": 15,
-      "userId": "1",
-      "id": 7
     },
     {
       "tweetId": 2,
@@ -250,6 +233,31 @@
       "tweetId": 18,
       "userId": "11",
       "id": 13
+    },
+    {
+      "tweetId": 11,
+      "userId": "1",
+      "id": 24
+    },
+    {
+      "tweetId": 15,
+      "userId": "1",
+      "id": 26
+    },
+    {
+      "tweetId": 18,
+      "userId": "1",
+      "id": 27
+    },
+    {
+      "tweetId": 16,
+      "userId": "1",
+      "id": 28
+    },
+    {
+      "tweetId": 3,
+      "userId": "1",
+      "id": 29
     }
   ]
 }

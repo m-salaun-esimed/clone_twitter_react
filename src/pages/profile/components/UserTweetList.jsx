@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { getTweetByUser, getTopLikedTweets } from "../../../domains/tweet/tweet.js";
+import { getTweetByUser, getTopLikedTweetsByUser } from "../../../domains/tweet/tweet.js";
 import { useSelector } from 'react-redux';
 import { ToastContainer } from "react-toastify";
 import { showToastError } from '../../../shared/utils/Toast.jsx';
@@ -13,49 +13,51 @@ function UserTweetList({ userId }) {
     const [isLoading, setIsLoading] = useState(true);
     const [tweets, setTweets] = useState([]);
 
-    useEffect(() => {
-        console.log("token, userid", token, userId)
-
-        const getTweetsApi = async () => {
-            console.log("dans getTweetApi")
-            try {
-                setIsLoading(true);
-                let response;
-                if (filtreTweet === "recent") {
-                    response = await getTweetByUser(token, userId); 
-                } else if (filtreTweet === "popular") {
-                    response = await getTopLikedTweets(token, userId);
-                }
-                setTweets(response);
-                console.log(tweets)
-            } catch (error) {
-                if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-                    showToastError("Veuillez vous reconnecter s'il vous plaît.");
-                }
-            } finally {
-                setIsLoading(false);
+    const getTweetsApi = async () => {
+        console.log("dans getTweetApi")
+        try {
+            setIsLoading(true);
+            let response;
+            if (filtreTweet === "recent") {
+                response = await getTweetByUser(token, userId);
+            } else if (filtreTweet === "popular") {
+                response = await getTopLikedTweetsByUser(token, userId);
             }
-        };
+            setTweets(response);
+            console.log(tweets)
+        } catch (error) {
+            if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+                showToastError("Veuillez vous reconnecter s'il vous plaît.");
+            }
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
-        if (token && userId) {
+    useEffect(() => {
+        if (token) {
             getTweetsApi();
         }
-    }, [token, userId, filtreTweet]);
+    }, [token, filtreTweet, userId]);
+
+    const handleTweetUpdate = () => {
+        getTweetsApi();
+    };
 
     return (
         <Fragment>
             <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-            zIndex={1000}
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                zIndex={1000}
             />
 
 
@@ -76,10 +78,11 @@ function UserTweetList({ userId }) {
             ) : (
                 <div className="space-y-4">
                     {tweets.length > 0 ? (
-                        tweets.map((tweet) => tweet.userId === userIdSlice ? <Tweet
+                        tweets.map((tweet) => <Tweet
                             key={tweet.id}
                             tweet={tweet}
-                        /> : "")
+                            onTweetUpdate={handleTweetUpdate}
+                        />)
                     ) : (
                         <p className="text-gray-400 text-center">Aucun tweet posté</p>
                     )}

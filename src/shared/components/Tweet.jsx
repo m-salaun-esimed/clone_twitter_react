@@ -6,14 +6,20 @@ import { IoIosList } from "react-icons/io";
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { checkIfLiked, likeTweet, deleteLikeTweet, getNbrLike } from '../../domains/tweet/likeTweet.js';
-import { IoHeartOutline, IoHeartSharp  } from "react-icons/io5";
-function Tweet({ tweet }) {
+import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import { deleteTweet, editTweet } from '../../domains/tweet/tweet.js';
+import { showToastError } from '../utils/Toast.jsx';
+
+function Tweet({ tweet, onTweetUpdate  }) {
     const navigate = useNavigate();
     const userIdSlice = useSelector((state) => state.auth.userId)
     const token = useSelector((state) => state.auth.token)
     const [userName, setUserName] = useState("Chargement...");
     const [isLiked, setIsLiked] = useState(false);
     const [nbrLike, setNbrLike] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedContent, setEditedContent] = useState(tweet.content);
 
     useEffect(() => {
         const checkIfUserLiked = async () => {
@@ -71,6 +77,37 @@ function Tweet({ tweet }) {
         }
     };
 
+    const handleDelete = async () => {
+        if (window.confirm('Êtes-vous sûr de vouloir supprimer ce tweet ?')) {
+            try {
+                await deleteTweet(token, tweet.id);
+                if (onTweetUpdate) {
+                    onTweetUpdate();
+                }
+            } catch (error) {
+                console.error('Erreur lors de la suppression:', error);
+                showToastError("Erreur lors de la suppression du tweet");
+            }
+        }
+    };
+
+    const handleEdit = async () => {
+        if (isEditing) {
+            try {
+                await editTweet(token, tweet.id, editedContent);
+                setIsEditing(false);
+                if (onTweetUpdate) {
+                    onTweetUpdate();
+                }
+            } catch (error) {
+                console.error('Erreur lors de la modification:', error);
+                showToastError("Erreur lors de la modification du tweet");
+            }
+        } else {
+            setIsEditing(true);
+        }
+    };
+
     return (
         <Fragment>
             <div className="bg-gray-50 dark:bg-black p-5 flex items-center justify-center">
@@ -81,11 +118,35 @@ function Tweet({ tweet }) {
                                 <a onClick={navigateToProfile}><span className="text-gray-500 dark:text-gray-400 font-normal block mr-2"><CgProfile className="w-10 h-10 text-white mr-2" /></span></a>
                                 <span className="text-black dark:text-white font-bold block mt-3 mr-3">{userName}</span>
                             </div>
-
                         </div>
                         <img src="/images//twitter-removebg-preview.png" alt="" className='h-8 w-8' />
                     </div>
-                    <p className="text-black dark:text-white block text-xl leading-snug mt-3">{tweet.content}</p>
+                    {isEditing ? (
+                        <div className="mt-3">
+                            <textarea
+                                value={editedContent}
+                                onChange={(e) => setEditedContent(e.target.value)}
+                                className="w-full p-2 text-black dark:text-white bg-gray-100 dark:bg-gray-700 rounded-lg"
+                                rows="4"
+                            />
+                            <div className="flex justify-end mt-2 space-x-2">
+                                <button
+                                    onClick={() => setIsEditing(false)}
+                                    className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
+                                >
+                                    Annuler
+                                </button>
+                                <button
+                                    onClick={handleEdit}
+                                    className="px-4 py-2 text-sm text-white bg-blue-500 rounded hover:bg-blue-600"
+                                >
+                                    Sauvegarder
+                                </button>
+                            </div>
+                        </div>
+                    ) : (
+                        <p className="text-black dark:text-white block text-xl leading-snug mt-3">{tweet.content}</p>
+                    )}
                     <p className="text-gray-500 dark:text-gray-400 text-base py-1 my-0.5">{formatDate(tweet.date)}</p>
                     <div className="border-gray-200 dark:border-gray-600 border border-b-0 my-1"></div>
                     <div className="text-gray-500 dark:text-gray-400 flex mt-3">
@@ -93,7 +154,7 @@ function Tweet({ tweet }) {
                             <button onClick={handleLike}>
                                 {isLiked ? <IoHeartSharp color='red'/> : <IoHeartOutline />}
                             </button>
-                            <span className="ml-3" >{formatLikes(nbrLike)}  j'aime(s)</span>
+                            <span className="ml-3" >{formatLikes(nbrLike)} </span>
                         </div>
                         <div className="flex items-center mr-6">
                             <svg className="fill-current h-5 w-auto" viewBox="0 0 24 24">
@@ -103,9 +164,22 @@ function Tweet({ tweet }) {
                             </svg>
                             <span className="ml-3">{formatCommentaire(tweet.comments)} personnes ont commenté(s)</span>
                         </div>
-                        <div className="flex justify-between items-center mr-6 mt-1">
-                            <IoIosList className="w-5 h-5 text-white mr-2" />
-                        </div>
+                        {userIdSlice === tweet.userId && (
+                            <div className="flex space-x-2">
+                                <button 
+                                    onClick={handleEdit}
+                                    className="text-blue-500 hover:text-blue-700"
+                                >
+                                    <FaEdit size={20} />
+                                </button>
+                                <button 
+                                    onClick={handleDelete}
+                                    className="text-red-500 hover:text-red-700"
+                                >
+                                    <FaTrash size={20} />
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

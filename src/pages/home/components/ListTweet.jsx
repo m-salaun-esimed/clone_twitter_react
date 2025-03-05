@@ -17,37 +17,38 @@ const ListTweet = () => {
     const [filtreTweet, setFiltreTweet] = useState("recent");
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        const getTweetsApi = async () => {
-            try {
-                setIsLoading(true);
-                let response;
-                if (filtreTweet === "recent") {
-                    response = await getRecentTweets(token);
-                } else if (filtreTweet === "popular") {
-                    response = await getTopLikedTweets(token);
-                }
-                else if (filtreTweet === "follow"){
-                    const followsId = await getFollowsIds(token, userIdSlice);
-                    console.log("follows : ", followsId);
-
-                    response = await getTweetsFollowByOrderDesc(token, followsId);
-                    console.log("response follow : ")
-                }
-                dispatch(setTweets(response));
-            } catch (error) {
-                if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-                    showToastError("Veuillez vous reconnecter s'il vous plait.");
-                }
-            } finally {
-                setIsLoading(false);
+    const getTweetsApi = async () => {
+        try {
+            setIsLoading(true);
+            let response;
+            if (filtreTweet === "recent") {
+                response = await getRecentTweets(token);
+            } else if (filtreTweet === "popular") {
+                response = await getTopLikedTweets(token);
             }
-        };
+            else if (filtreTweet === "follow"){
+                const followsId = await getFollowsIds(token, userIdSlice);
+                response = await getTweetsFollowByOrderDesc(token, followsId);
+            }
+            dispatch(setTweets(response));
+        } catch (error) {
+            if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+                showToastError("Veuillez vous reconnecter s'il vous plait.");
+            }
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
+    useEffect(() => {
         if (token) {
             getTweetsApi();
         }
-    }, [token, filtreTweet, dispatch]);
+    }, [token, filtreTweet]);
+
+    const handleTweetUpdate = () => {
+        getTweetsApi();
+    };
 
     return (
         <Fragment>
@@ -62,7 +63,6 @@ const ListTweet = () => {
                     <option value="recent">Les plus récents</option>
                     <option value="popular">Les plus populaires</option>
                     <option value="follow">Abonnements</option>
-
                 </select>
             </div>
 
@@ -79,7 +79,7 @@ const ListTweet = () => {
                 theme="light"
             />
 
-            {isLoading? (
+            {isLoading ? (
                 <Loading />
             ) : (
                 Array.isArray(tweets) && tweets.length > 0 ? (
@@ -87,6 +87,7 @@ const ListTweet = () => {
                         <Tweet
                             key={tweet.id}
                             tweet={tweet}
+                            onTweetUpdate={handleTweetUpdate}
                         />
                     ))
                 ) : (
