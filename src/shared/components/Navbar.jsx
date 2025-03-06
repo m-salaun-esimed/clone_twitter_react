@@ -7,7 +7,6 @@ import { IoNotificationsOutline } from "react-icons/io5";
 
 const NavBar = () => {
   const userId = useSelector((state) => state.auth.userId);
-  console.log("userId dans navbar : ", userId)
   const [isOpen, setIsOpen] = useState(false);
 
   return (

@@ -24,7 +24,6 @@ function Tweet({ tweet, onTweetUpdate }) {
     const [editedContent, setEditedContent] = useState(tweet.content);
 
     useEffect(() => {
-        console.log("tweet :", tweet)
         const checkIfUserLiked = async () => {
             const liked = await checkIfLiked(tweet.id, userIdSlice, token);
             setIsLiked(liked);

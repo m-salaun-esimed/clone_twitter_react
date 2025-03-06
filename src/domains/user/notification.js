@@ -1,7 +1,6 @@
 import api from '../axiosInstance';
 
 const addNotificationFollow = async (userIdfollower, userIdfollowed) => {
-    console.log("userIdfollower, userIdfollowed : ", userIdfollower, userIdfollowed)
     try {
         const response = await api.post('notifications', {
             followerId: userIdfollower,
@@ -11,7 +10,6 @@ const addNotificationFollow = async (userIdfollower, userIdfollowed) => {
             status: "abonnement"
         });
 
-        console.log("Follow notification request sent:", response.data);
         return response.data;
     } catch (error) {
         console.error("Erreur lors de la notification de demande de follow :", error.response?.data || error.message);
@@ -27,7 +25,6 @@ const addNotificationLike = async (tweetId, userLikeId) => {
             notificationDate: new Date().toISOString()
         });
 
-        console.log("Follow notification request sent:", response.data);
         return response.data;
     } catch (error) {
         console.error("Erreur lors de la notification de demande de follow :", error.response?.data || error.message);
@@ -53,7 +50,6 @@ const patchNotificationFollow = async (userIdfollower, userIdfollowed) => {
                 isUnfollow: true
             });
 
-            console.log("Follow notification updated:", response.data);
             return response.data;
         } else {
             console.error("Aucune notification trouvée pour ces IDs de suivi.");
@@ -68,7 +64,6 @@ const patchNotificationFollow = async (userIdfollower, userIdfollowed) => {
 
 const getRecentNotificationByUser = async (userId) => {
     try {
-        console.log("userID dans getRecentNotificationByUser :", userId)
         const response = await api.get(`notifications/?followedId=${userId}&_sort=notificationDate&_order=desc`);
         return response.data;
     } catch (error) {
@@ -80,11 +75,9 @@ const getRecentNotificationByUser = async (userId) => {
 const getNotificationLike = async (userId) => {
     try {
         const response = await api.get(`tweets?userId=${userId}&_embed=notificationsLike`);
-        console.log("response.data.notificationsLike dans getNotificationLike :", response.data);
 
         const tweetsWithLikes = response.data.filter(tweet => tweet.notificationsLike && tweet.notificationsLike.length > 0);
 
-        console.log("Tweets avec notificationsLike :", tweetsWithLikes);
         return tweetsWithLikes;
     } catch (error) {
         console.error('Erreur lors de la récupération des tweets :', error.response?.data || error.message);

@@ -4,10 +4,8 @@ import { addNotificationFollow, getNotificationLike, getRecentNotificationByUser
 export const fetchNotificationsFollow = createAsyncThunk(
     'notification/fetchNotificationsFollow',
     async ({ userId }, { rejectWithValue }) => {
-        console.log("userId dans slice :", userId)
         try {
             const response = await getRecentNotificationByUser(userId);
-            console.log("response fetchNotifications", response)
             return response;
         } catch (error) {
             return rejectWithValue(error.response?.data || "Erreur inconnue");
@@ -18,10 +16,8 @@ export const fetchNotificationsFollow = createAsyncThunk(
 export const fetchNotificationsLike  = createAsyncThunk(
     'notification/fetchNotificationsLike',
     async ({ userId }, { rejectWithValue }) => {
-        console.log("dans fetchNotificationsLike")
         try {
             const response = await getNotificationLike(userId);
-            console.log("fetchNotificationsLike : ", response)
             return response;
         } catch (error) {
             return rejectWithValue(error.response?.data || "Erreur inconnue");

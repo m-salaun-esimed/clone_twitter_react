@@ -7,6 +7,7 @@ import { counterFollowed, counterFollower, checkIfFollowApi, followApi, unfollow
 import { useNavigate } from "react-router-dom";
 import { addNotificationFollow, patchNotificationFollow } from "../../../domains/user/notification";
 import { setNotificationsFollow } from "../../../shared/store/notificationSlice";
+import Disconnect from "./Disconnect";
 
 function UserProfile({ userId }) {
   const token = useSelector((state) => state.auth.token);
@@ -73,7 +74,7 @@ function UserProfile({ userId }) {
   const follow = async () => {
     try {
       const response = await followApi(token, userIdSlice, userId);
-      await dispatch(setNotificationsFollow({userIdfollower: userIdSlice, userIdfollowed: userId}));
+      await dispatch(setNotificationsFollow({ userIdfollower: userIdSlice, userIdfollowed: userId }));
       showToastSuccess(`Ami bien ajouté : ${email}`);
       setIsFollow(true);
     } catch (error) {
@@ -132,7 +133,7 @@ function UserProfile({ userId }) {
               }
             </div>
 
-            <div className="mt-2 flex justify-center md:justify-start space-x-4 text-sm text-gray-400">
+            <div className="mt-2 flex justify-center md:justify-start items-center space-x-4 text-sm text-gray-400">
               <button
                 onClick={handleFollowingClick}
                 className={`hover:underline ${userId === userIdSlice ? 'cursor-pointer' : 'cursor-default'}`}
@@ -145,7 +146,15 @@ function UserProfile({ userId }) {
               >
                 <span><strong className="text-white">{followedCount}</strong> abonnés</span>
               </button>
+              <div className="ml-auto">
+              {
+                userIdSlice === userId ? (
+                  <Disconnect />
+                ) : ""
+              }
+              </div>
             </div>
+
           </div>
 
           <div className="flex justify-between border-t border-gray-800 text-gray-400 text-sm">

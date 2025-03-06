@@ -76,6 +76,12 @@
       "password": "$2a$10$A2J.B3kNute3uLtfpgkFxeJZm1jhJ8m8TJViR/92DjPP68Roh58rO",
       "date": "2025-03-06T06:18:03.050Z",
       "id": 16
+    },
+    {
+      "email": "oui@oui.com",
+      "password": "$2a$10$t3Qqbq6yG1mr8kdkz9vLJO6RhdOYR5w.NZR7c3tSKmWdzVhcWNuQS",
+      "date": "2025-03-06T19:16:15.153Z",
+      "id": 17
     }
   ],
   "tweets": [
@@ -345,6 +351,22 @@
       "likes": 0,
       "comments": 0,
       "id": 40
+    },
+    {
+      "userId": "1",
+      "content": "test",
+      "date": "2025-03-06T18:52:00.247Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 41
+    },
+    {
+      "userId": "17",
+      "content": "Mon premier tweet !",
+      "date": "2025-03-06T19:17:51.334Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 42
     }
   ],
   "follows": [
@@ -423,6 +445,13 @@
       "requestDate": "2025-03-06T13:34:08.044Z",
       "acceptDate": null,
       "id": 14
+    },
+    {
+      "followerId": "17",
+      "followedId": "1",
+      "requestDate": "2025-03-06T19:16:52.818Z",
+      "acceptDate": null,
+      "id": 15
     }
   ],
   "likes": [
@@ -630,6 +659,46 @@
       "tweetId": 40,
       "userId": "1",
       "id": 76
+    },
+    {
+      "tweetId": 41,
+      "userId": "1",
+      "id": 77
+    },
+    {
+      "tweetId": 29,
+      "userId": "17",
+      "id": 78
+    },
+    {
+      "tweetId": 30,
+      "userId": "17",
+      "id": 79
+    },
+    {
+      "tweetId": 35,
+      "userId": "17",
+      "id": 80
+    },
+    {
+      "tweetId": 36,
+      "userId": "17",
+      "id": 81
+    },
+    {
+      "tweetId": 37,
+      "userId": "17",
+      "id": 82
+    },
+    {
+      "tweetId": 25,
+      "userId": "17",
+      "id": 83
+    },
+    {
+      "tweetId": 42,
+      "userId": "17",
+      "id": 84
     }
   ],
   "notifications": [
@@ -672,6 +741,14 @@
       "isUnfollow": false,
       "status": "abonnement",
       "id": 4
+    },
+    {
+      "followerId": "17",
+      "followedId": "1",
+      "notificationDate": "2025-03-06T19:16:52.830Z",
+      "isUnfollow": false,
+      "status": "abonnement",
+      "id": 5
     }
   ],
   "notificationsLike": [
@@ -746,6 +823,54 @@
       "userLikeId": "1",
       "notificationDate": "2025-03-06T16:31:51.895Z",
       "id": 12
+    },
+    {
+      "tweetId": 41,
+      "userLikeId": "1",
+      "notificationDate": "2025-03-06T18:52:04.680Z",
+      "id": 13
+    },
+    {
+      "tweetId": 29,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-06T19:17:19.043Z",
+      "id": 14
+    },
+    {
+      "tweetId": 30,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-06T19:17:20.628Z",
+      "id": 15
+    },
+    {
+      "tweetId": 35,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-06T19:17:31.815Z",
+      "id": 16
+    },
+    {
+      "tweetId": 36,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-06T19:17:32.826Z",
+      "id": 17
+    },
+    {
+      "tweetId": 37,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-06T19:17:33.824Z",
+      "id": 18
+    },
+    {
+      "tweetId": 25,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-06T19:17:34.942Z",
+      "id": 19
+    },
+    {
+      "tweetId": 42,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-06T19:17:56.662Z",
+      "id": 20
     }
   ]
 }

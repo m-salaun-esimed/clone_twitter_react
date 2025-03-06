@@ -30,8 +30,6 @@ const getTopLikedTweets = async (token) => {
         const topLikedTweets = tweets
             .filter(tweet => new Date(tweet.date) >= threeDaysAgo)
             .sort((a, b) => b.likes.length - a.likes.length);
-
-        console.log(topLikedTweets);
         return topLikedTweets;
     } catch (error) {
         console.error('Erreur lors de la récupération des tweets :', error.response?.data || error.message);

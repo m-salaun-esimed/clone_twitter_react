@@ -13,7 +13,6 @@ const likeTweet = async (tweetId, userId, token) => {
                     userId,
                 }
             );
-            console.log('Tweet liked:', response.data);
         } catch (error) {
             console.error('Erreur lors du like du tweet:', error.response?.data || error.message);
         }
@@ -22,14 +21,12 @@ const likeTweet = async (tweetId, userId, token) => {
 
 const deleteLikeTweet = async (tweetId, userId, token) => {
     const likeId = await getLikeId(tweetId, userId, token);
-    console.log("likedId : ", likeId);
     const isLike = await checkIfLiked(tweetId, userId, token);
     if(isLike){
         try {
             const response =await api.delete(
                 `likes/${likeId}`
             );
-            console.log('Like supprimé:', response.data);
         } catch (error) {
             console.error('Erreur lors de la suppression du like du tweet:', error.response?.data || error.message);
         }
@@ -52,8 +49,6 @@ const checkIfLiked = async (tweetId, userId, token) => {
 const getLikeId = async (tweetId, userId, token) => {
     try {
         const response = await api.get(`likes?tweetId=${tweetId}&userId=${userId}`);
-
-        console.log("response.data : ", response.data);
 
         if (response.data && response.data.length > 0) {
             return response.data[0].id; 

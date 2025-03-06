@@ -22,7 +22,6 @@ export const showToastSuccess = (message) => {
 
 
 export const showToastWarning = (message) => {
-    console.log("test");
     toast.warning(
         <div>
             {message.split("\n").map((line, index) => (
@@ -44,7 +43,6 @@ export const showToastWarning = (message) => {
 
 
 export const showToastError = (message) => {
-    console.log("toast error");
     toast.error(
         <div>
             {message.split("\n").map((line, index) => (

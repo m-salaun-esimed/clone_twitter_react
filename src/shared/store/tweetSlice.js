@@ -42,7 +42,6 @@ export const fetchTweetsByUser = createAsyncThunk(
 export const editTweet = createAsyncThunk(
     'tweet/editTweet',
     async ({ tweetId, editedContent, token }, { rejectWithValue }) => {
-        console.log("editTweet tweetId : ", tweetId)
         try {
             await editTweetUser(token, tweetId, editedContent).unwrap();
         } catch (error) {

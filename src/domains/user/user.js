@@ -21,13 +21,11 @@ const checkTokenValidity = async (token, userId) => {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log("checkTokenValidity : true")
 
         return true;
     } catch (error) {
         if (error.response?.status === 401) {
             console.error("❌ Token invalide ou expiré.");
-            console.log("checkTokenValidity : false")
             return false;
         }
 

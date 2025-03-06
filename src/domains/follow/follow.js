@@ -13,8 +13,6 @@ const followApi = async (token, userIdfollower, userIdfollowed) => {
                 "Content-Type": "application/json"
             }
         });
-
-        console.log("Follow request sent:", response.data);
         return response.data;
     } catch (error) {
         console.error("Erreur lors de la demande de follow :", error.response?.data || error.message);
@@ -59,7 +57,6 @@ const getFollowsIds = async (token, userId) => {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log("response.data : ", response.data.map(follow => follow.followedId));
         return  response.data.map(follow => follow.followedId);
     } catch (error) {
         console.error('Erreur lors de la récupération des données de suivi :', error.response?.data || error.message);
@@ -106,7 +103,6 @@ const unfollowApi = async (token, userIdfollower, userIdfollowed) => {
             },
         });
 
-        console.log("Unfollow successful");
         return deleteResponse.data;
     } catch (error) {
         console.error("Erreur lors de l'unfollow :", error.response?.data || error.message);
@@ -122,7 +118,6 @@ const fecthFollowersApi = async (token, userId) => {
                 'Content-Type': 'application/json'
             }
         });
-        console.log("response fecthFollowersApi :", response)
         return response;
     } catch (error) {
         console.error('Erreur lors de la récupération des followers:', error);

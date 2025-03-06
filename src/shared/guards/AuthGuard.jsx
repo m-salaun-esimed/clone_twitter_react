@@ -15,9 +15,9 @@ const AuthGuard = (WrappedComponent) => {
 
     useEffect(() => {
       const verifyToken = async () => {
+        console.log("token : ", token, "userId :",userId)
         const isValid = await checkTokenValidity(token, userId);
         if (!isValid) {
-          console.log("❌ Token invalide, redirection vers /login");
           dispatch(setIsConnected(false));
           navigate("/login");
         } else {
