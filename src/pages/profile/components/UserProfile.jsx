@@ -149,7 +149,7 @@ function UserProfile({ userId }) {
           </div>
 
           <div className="flex justify-between border-t border-gray-800 text-gray-400 text-sm">
-            {["Posts", "Réponses", "J'aime"].map((item) => (
+            {["Posts", "J'aime"].map((item) => (
               <button key={item} className="flex-1 py-2 hover:text-white">
                 {item}
               </button>

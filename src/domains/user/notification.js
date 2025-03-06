@@ -19,6 +19,22 @@ const addNotificationFollow = async (userIdfollower, userIdfollowed) => {
     }
 }
 
+const addNotificationLike = async (tweetId, userLikeId) => {
+    try {
+        const response = await api.post('notificationsLike', {
+            tweetId: tweetId,
+            userLikeId: userLikeId,
+            notificationDate: new Date().toISOString()
+        });
+
+        console.log("Follow notification request sent:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Erreur lors de la notification de demande de follow :", error.response?.data || error.message);
+        throw error;
+    }
+}
+
 const patchNotificationFollow = async (userIdfollower, userIdfollowed) => {
     try {
         const notifications = await api.get('notifications', {
@@ -61,5 +77,21 @@ const getRecentNotificationByUser = async (userId) => {
     }
 };
 
+const getNotificationLike = async (userId) => {
+    try {
+        const response = await api.get(`tweets?userId=${userId}&_embed=notificationsLike`);
+        console.log("response.data.notificationsLike dans getNotificationLike :", response.data);
 
-export { addNotificationFollow, patchNotificationFollow, getRecentNotificationByUser};
+        const tweetsWithLikes = response.data.filter(tweet => tweet.notificationsLike && tweet.notificationsLike.length > 0);
+
+        console.log("Tweets avec notificationsLike :", tweetsWithLikes);
+        return tweetsWithLikes;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des tweets :', error.response?.data || error.message);
+        throw error;
+    }
+}
+
+
+
+export { addNotificationFollow, addNotificationLike, patchNotificationFollow, getRecentNotificationByUser, getNotificationLike};

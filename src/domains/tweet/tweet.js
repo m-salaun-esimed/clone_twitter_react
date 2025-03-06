@@ -2,7 +2,7 @@ import api from '../axiosInstance';
 
 const getRecentTweets = async (token) => {
     try {
-        const response = await api.get('tweet/?_sort=date&_order=desc&_embed=likes', {
+        const response = await api.get('tweets/?_sort=date&_order=desc&_embed=likes', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -16,7 +16,7 @@ const getRecentTweets = async (token) => {
 
 const getTopLikedTweets = async (token) => {
     try {
-        const response = await api.get('tweet?_embed=likes', {
+        const response = await api.get('tweets?_embed=likes', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -47,7 +47,7 @@ const getTweetsFollowByOrderDesc = async (token, followsId) => {
         }
         const queryParams = followsId.map(id => `userId=${id}`).join("&");
 
-        const url = `tweet/?${queryParams}&_sort=date&_order=desc`;
+        const url = `tweets/?${queryParams}&_sort=date&_order=desc`;
 
         const response = await api.get(url, {
             headers: {
@@ -73,7 +73,7 @@ const postTweet = async (token, userId, content) => {
     };
 
     try {
-        const response = await api.post('tweet/', tweet, {
+        const response = await api.post('tweets/', tweet, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -87,7 +87,7 @@ const postTweet = async (token, userId, content) => {
 
 const getTweetByUser = async (token, userId) => {
     try {
-        const response = await api.get(`tweet/?userId=${userId}&_sort=date&_order=desc`, {
+        const response = await api.get(`tweets/?userId=${userId}&_sort=date&_order=desc`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -101,7 +101,7 @@ const getTweetByUser = async (token, userId) => {
 
 const getTopLikedTweetsByUser = async (token, userId) => {
     try {
-        const response = await api.get(`tweet/?userId=${userId}&_embed=likes`, {
+        const response = await api.get(`tweets/?userId=${userId}&_embed=likes`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -126,7 +126,7 @@ const getTopLikedTweetsByUser = async (token, userId) => {
 
 const deleteTweet = async (token, tweetId) => {
     try {
-        const response = await api.delete(`tweet/${tweetId}`, {
+        const response = await api.delete(`tweets/${tweetId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -140,7 +140,7 @@ const deleteTweet = async (token, tweetId) => {
 
 const editTweetUser = async (token, tweetId, newContent) => {
     try {
-        const response = await api.patch(`tweet/${tweetId}`, {
+        const response = await api.patch(`tweets/${tweetId}`, {
             content: newContent,
         }, {
             headers: {

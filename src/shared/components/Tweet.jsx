@@ -10,6 +10,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { deleteTweet } from '../../domains/tweet/tweet.js';
 import { showToastError, showToastSuccess } from '../utils/Toast.jsx';
 import { editTweet } from '../store/tweetSlice.js';
+import { addNotificationLike } from '../../domains/user/notification.js';
 
 function Tweet({ tweet, onTweetUpdate }) {
     const navigate = useNavigate();
@@ -59,7 +60,7 @@ function Tweet({ tweet, onTweetUpdate }) {
             setIsLiked(false);
         } else {
             await likeTweet(tweet.id, userIdSlice, token);
-            // await addNotification(userIdSlice, tweet.userId, "like");
+            await addNotificationLike(tweet.id, userIdSlice);
             setIsLiked(true);
         }
     };

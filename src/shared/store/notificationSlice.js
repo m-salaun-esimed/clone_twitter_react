@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addNotificationFollow, getRecentNotificationByUser } from "../../domains/user/notification";
+import { addNotificationFollow, getNotificationLike, getRecentNotificationByUser } from "../../domains/user/notification";
 
 export const fetchNotificationsFollow = createAsyncThunk(
     'notification/fetchNotificationsFollow',
@@ -14,6 +14,21 @@ export const fetchNotificationsFollow = createAsyncThunk(
         }
     }
 );
+
+export const fetchNotificationsLike  = createAsyncThunk(
+    'notification/fetchNotificationsLike',
+    async ({ userId }, { rejectWithValue }) => {
+        console.log("dans fetchNotificationsLike")
+        try {
+            const response = await getNotificationLike(userId);
+            console.log("fetchNotificationsLike : ", response)
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || "Erreur inconnue");
+        }
+    }
+);
+
 
 export const setNotificationsFollow = createAsyncThunk(
     'notification/setNotificationsFollow',
@@ -30,6 +45,7 @@ const NotificationSlice = createSlice({
     name: 'notification',
     initialState: {
         notifications: null,
+        notificationsLike: null,
         status: 'idle',
         error: null
     },
@@ -50,8 +66,10 @@ const NotificationSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.payload;
             })
-
-        //setNotificationsFollow
+            .addCase(fetchNotificationsLike.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.notificationsLike = action.payload;
+            })
     }
 });
 
