@@ -1,33 +1,29 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useEffect, Fragment, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Tweet from '../../../shared/components/Tweet.jsx';
 import { showToastError } from '../../../shared/utils/Toast.jsx';
 import Loading from '../../../shared/components/Loading.jsx';
-import ModalPostTweet from '../../postTweet/components/ModalPostTweet.jsx'
+import ModalPostTweet from '../../postTweet/components/ModalPostTweet.jsx';
 import { ToastContainer } from 'react-toastify';
 import { fetchTweets } from '../../../shared/store/tweetSlice.js';
 
 const ListTweet = () => {
+    const dispatch = useDispatch();
     const token = useSelector((state) => state.auth.token);
     const tweets = useSelector((state) => state.tweet.tweets);
     const userIdSlice = useSelector((state) => state.auth.userId);
-    const [isLoading, setIsLoading] = useState(true);
+    const status = useSelector((state) => state.tweet.status);
     const [filtreTweet, setFiltreTweet] = useState("recent");
-    const dispatch = useDispatch();
 
     const getTweets = async () => {
         try {
-            setIsLoading(true);
             await dispatch(fetchTweets({ filtreTweet, token, userId: userIdSlice })).unwrap();
         } catch (error) {
             if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-                showToastError("Veuillez vous reconnecter s'il vous plait.");
+                showToastError("Veuillez vous reconnecter s'il vous plaît.");
             }
-        } finally {
-            setIsLoading(false);
         }
     };
-    
 
     useEffect(() => {
         if (token) {
@@ -71,20 +67,19 @@ const ListTweet = () => {
             <div className='ml-5'>
                 <ModalPostTweet onTweetUpdate={handleTweetUpdate}/>
             </div>
-            {isLoading ? (
+
+            {status === 'loading' ? (
                 <Loading />
+            ) : Array.isArray(tweets) && tweets.length > 0 ? (
+                tweets.map((tweet) => (
+                    <Tweet
+                        key={tweet.id}
+                        tweet={tweet}
+                        onTweetUpdate={handleTweetUpdate}
+                    />
+                ))
             ) : (
-                Array.isArray(tweets) && tweets.length > 0 ? (
-                    tweets.map((tweet) => (
-                        <Tweet
-                            key={tweet.id}
-                            tweet={tweet}
-                            onTweetUpdate={handleTweetUpdate}
-                        />
-                    ))
-                ) : (
-                    <p className='text-white'>No tweets available</p>
-                )
+                <p className='text-white'>No tweets available</p>
             )}
         </Fragment>
     );

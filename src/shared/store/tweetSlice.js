@@ -50,7 +50,6 @@ export const editTweet = createAsyncThunk(
     }
 );
 
-
 const TweetSlice = createSlice({
     name: 'tweet',
     initialState: {

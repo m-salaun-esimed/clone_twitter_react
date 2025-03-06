@@ -77,7 +77,7 @@ const Followers = () => {
             <div className="min-h-screen bg-black">
                 <NavBar />
                 <div className="p-4 sm:ml-64">
-                    <h1 className="text-white text-2xl font-bold mb-4">Followers</h1>
+                    <h1 className="text-white text-2xl font-bold mb-4">Abonnés</h1>
                     <div className="space-y-4">
                         {followers.length > 0 ? (
                             followers.map((follower) => (

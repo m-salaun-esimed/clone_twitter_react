@@ -28,7 +28,6 @@ function NotificationItem({ notification, notificationType }) {
 
   return (
     <Fragment>
-      {/* Affichage des notifications de type "follow" */}
       {notificationType === "follow" && (
         <div
           key={notification.id}
@@ -36,7 +35,7 @@ function NotificationItem({ notification, notificationType }) {
         >
           <div className="flex items-center space-x-4">
             <span className="text-white font-medium">Abonnement de :</span>
-            <span className="text-teal-400">{userNames[0]}</span> {/* Affiche le nom du follower */}
+            <span className="text-teal-400">{userNames[0]}</span>
           </div>
           <div className="flex items-center space-x-2">
             <span className="text-gray-400">Le :</span>
@@ -60,7 +59,7 @@ function NotificationItem({ notification, notificationType }) {
         <div className="text-teal-400">
           {notification.notificationsLike.slice(0, 3).map((likeNotification, index) => (
             <div key={likeNotification.id}>
-              {`Utilisateur : ${userNames[index]} - Date : ${likeNotification.notificationDate}`}
+              {`${userNames[index]} - Le ${likeNotification.notificationDate}`}
             </div>
           ))}
           {notification.notificationsLike.length > 3 && (

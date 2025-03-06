@@ -32,7 +32,6 @@ export const postRegister = createAsyncThunk(
     }
 );
 
-// Fonction pour récupérer userId depuis un token
 const getUserIdFromToken = (token) => {
     try {
         return token ? jwtDecode(token).sub : null;

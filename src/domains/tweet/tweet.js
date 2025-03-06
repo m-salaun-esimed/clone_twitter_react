@@ -2,11 +2,12 @@ import api from '../axiosInstance';
 
 const getRecentTweets = async (token) => {
     try {
-        const response = await api.get('tweets/?_sort=date&_order=desc&_embed=likes', {
+        const response = await api.get('tweets/?_sort=date&_order=desc&_embed=comments', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
+        console.log("response :", response)
         return response.data;
     } catch (error) {
         console.error('Erreur lors de la récuperation des tweets :', error.response?.data || error.message);
@@ -16,7 +17,7 @@ const getRecentTweets = async (token) => {
 
 const getTopLikedTweets = async (token) => {
     try {
-        const response = await api.get('tweets?_embed=likes', {
+        const response = await api.get('tweets?_embed=comments', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -45,7 +46,7 @@ const getTweetsFollowByOrderDesc = async (token, followsId) => {
         }
         const queryParams = followsId.map(id => `userId=${id}`).join("&");
 
-        const url = `tweets/?${queryParams}&_sort=date&_order=desc`;
+        const url = `tweets/?${queryParams}&_sort=date&_order=desc&_embed=comments`;
 
         const response = await api.get(url, {
             headers: {
@@ -85,7 +86,7 @@ const postTweet = async (token, userId, content) => {
 
 const getTweetByUser = async (token, userId) => {
     try {
-        const response = await api.get(`tweets/?userId=${userId}&_sort=date&_order=desc`, {
+        const response = await api.get(`tweets/?userId=${userId}&_sort=date&_order=desc&_embed=comments`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -99,7 +100,7 @@ const getTweetByUser = async (token, userId) => {
 
 const getTopLikedTweetsByUser = async (token, userId) => {
     try {
-        const response = await api.get(`tweets/?userId=${userId}&_embed=likes`, {
+        const response = await api.get(`tweets/?userId=${userId}&_embed=comments`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

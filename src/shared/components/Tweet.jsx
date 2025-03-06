@@ -11,6 +11,8 @@ import { deleteTweet } from '../../domains/tweet/tweet.js';
 import { showToastError, showToastSuccess } from '../utils/Toast.jsx';
 import { editTweet } from '../store/tweetSlice.js';
 import { addNotificationLike } from '../../domains/user/notification.js';
+import { Button } from '@mui/material';
+import Commentaires from './Commentaires.jsx';
 
 function Tweet({ tweet, onTweetUpdate }) {
     const navigate = useNavigate();
@@ -22,6 +24,7 @@ function Tweet({ tweet, onTweetUpdate }) {
     const [nbrLike, setNbrLike] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [editedContent, setEditedContent] = useState(tweet.content);
+    const [showComments, setShowComments] = useState(false);
 
     useEffect(() => {
         const checkIfUserLiked = async () => {
@@ -87,6 +90,11 @@ function Tweet({ tweet, onTweetUpdate }) {
         }
     };
 
+    const showCommentaireComponents = () => {
+        setShowComments(!showComments);
+    };
+
+
     return (
         <Fragment>
             <div className="bg-gray-50 dark:bg-black p-4 flex justify-center">
@@ -141,12 +149,14 @@ function Tweet({ tweet, onTweetUpdate }) {
                         </div>
 
                         <div className="flex items-center space-x-1">
-                            <svg className="fill-current w-6 h-6" viewBox="0 0 24 24">
-                                <g>
-                                    <path d="M14.046 2.242l-4.148-.01h-.002c-4.374 0-7.8 3.427-7.8 7.802 0 4.098 3.186 7.206 7.465 7.37v3.828c0 .108.044.286.12.403.142.225.384.347.632.347.138 0 .277-.038.402-.118.264-.168 6.473-4.14 8.088-5.506 1.902-1.61 3.04-3.97 3.043-6.312v-.017c-.006-4.367-3.43-7.787-7.8-7.788z"></path>
-                                </g>
-                            </svg>
-                            <span>{formatNumber(tweet.comments)}</span>
+                            <Button onClick={showCommentaireComponents}>
+                                <svg className="fill-current w-6 h-6" viewBox="0 0 24 24">
+                                    <g>
+                                        <path d="M14.046 2.242l-4.148-.01h-.002c-4.374 0-7.8 3.427-7.8 7.802 0 4.098 3.186 7.206 7.465 7.37v3.828c0 .108.044.286.12.403.142.225.384.347.632.347.138 0 .277-.038.402-.118.264-.168 6.473-4.14 8.088-5.506 1.902-1.61 3.04-3.97 3.043-6.312v-.017c-.006-4.367-3.43-7.787-7.8-7.788z"></path>
+                                    </g>
+                                </svg>
+                                <span>{formatNumber(tweet.comments.length)}</span>
+                            </Button>
                         </div>
 
                         {userIdSlice === tweet.userId && (
@@ -158,6 +168,11 @@ function Tweet({ tweet, onTweetUpdate }) {
                                     <FaTrash size={20} />
                                 </button>
                             </div>
+                        )}
+                    </div>
+                    <div>
+                        {showComments && (
+                           <Commentaires tweet={tweet} userName={userName}/>
                         )}
                     </div>
                 </div>
