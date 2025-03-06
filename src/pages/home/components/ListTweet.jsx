@@ -1,36 +1,24 @@
 import { useState, useEffect, Fragment } from 'react';
-import { getRecentTweets, getTopLikedTweets, getTweetsFollowByOrderDesc } from "../../../domains/tweet/tweet.js";
 import { useDispatch, useSelector } from "react-redux";
 import Tweet from '../../../shared/components/Tweet.jsx';
 import { showToastError } from '../../../shared/utils/Toast.jsx';
 import Loading from '../../../shared/components/Loading.jsx';
+import ModalPostTweet from '../../postTweet/components/ModalPostTweet.jsx'
 import { ToastContainer } from 'react-toastify';
-import { setTweets } from '../../../shared/store/tweetSlice.js';
-import { getFollowsIds } from '../../../domains/follow/follow.js';
+import { fetchTweets } from '../../../shared/store/tweetSlice.js';
 
 const ListTweet = () => {
     const token = useSelector((state) => state.auth.token);
     const tweets = useSelector((state) => state.tweet.tweets);
     const userIdSlice = useSelector((state) => state.auth.userId);
-
     const [isLoading, setIsLoading] = useState(true);
     const [filtreTweet, setFiltreTweet] = useState("recent");
     const dispatch = useDispatch();
 
-    const getTweetsApi = async () => {
+    const getTweets = async () => {
         try {
             setIsLoading(true);
-            let response;
-            if (filtreTweet === "recent") {
-                response = await getRecentTweets(token);
-            } else if (filtreTweet === "popular") {
-                response = await getTopLikedTweets(token);
-            }
-            else if (filtreTweet === "follow"){
-                const followsId = await getFollowsIds(token, userIdSlice);
-                response = await getTweetsFollowByOrderDesc(token, followsId);
-            }
-            dispatch(setTweets(response));
+            await dispatch(fetchTweets({ filtreTweet, token, userId: userIdSlice })).unwrap();
         } catch (error) {
             if (error.response && (error.response.status === 401 || error.response.status === 403)) {
                 showToastError("Veuillez vous reconnecter s'il vous plait.");
@@ -39,15 +27,16 @@ const ListTweet = () => {
             setIsLoading(false);
         }
     };
+    
 
     useEffect(() => {
         if (token) {
-            getTweetsApi();
+            getTweets();
         }
     }, [token, filtreTweet]);
 
     const handleTweetUpdate = () => {
-        getTweetsApi();
+        getTweets();
     };
 
     return (
@@ -79,6 +68,9 @@ const ListTweet = () => {
                 theme="light"
             />
 
+            <div className='ml-5'>
+                <ModalPostTweet onTweetUpdate={handleTweetUpdate}/>
+            </div>
             {isLoading ? (
                 <Loading />
             ) : (

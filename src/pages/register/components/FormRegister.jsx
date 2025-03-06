@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { setIsConnected, setToken, setIsStayConnected } from "../../../shared/store/authSlice.js";
+import { setIsConnected, setToken, setIsStayConnected, setUserId } from "../../../shared/store/authSlice.js";
 import { registerApi } from "../../../domains/authentitification/auth.js";
 import { showToastError } from "../../../shared/utils/Toast.jsx"
 
@@ -77,8 +77,8 @@ function FormRegister() {
             const userId = jwtDecode(localStorage.getItem("accessToken")).sub;
             dispatch(setUserId(userId))
             dispatch(setIsConnected(true));
+            window.location.reload();
         } catch (error) {
-            showToastError(error.message);
         }
     };
 

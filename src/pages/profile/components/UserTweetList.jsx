@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { getTweetByUser, getTopLikedTweetsByUser } from "../../../domains/tweet/tweet.js";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from "react-toastify";
+import { fetchTweetsByUser } from '../../../shared/store/tweetSlice.js';
 import { showToastError } from '../../../shared/utils/Toast.jsx';
 import Tweet from '../../../shared/components/Tweet.jsx';
 import Loading from '../../../shared/components/Loading.jsx';
@@ -9,22 +9,14 @@ import Loading from '../../../shared/components/Loading.jsx';
 function UserTweetList({ userId }) {
     const token = useSelector((state) => state.auth.token);
     const [filtreTweet, setFiltreTweet] = useState("recent");
-    const userIdSlice = useSelector((state) => state.auth.userId);
     const [isLoading, setIsLoading] = useState(true);
-    const [tweets, setTweets] = useState([]);
+    const tweets = useSelector((state) => state.tweet.tweets);
+    const dispatch = useDispatch();
 
     const getTweetsApi = async () => {
-        console.log("dans getTweetApi")
         try {
             setIsLoading(true);
-            let response;
-            if (filtreTweet === "recent") {
-                response = await getTweetByUser(token, userId);
-            } else if (filtreTweet === "popular") {
-                response = await getTopLikedTweetsByUser(token, userId);
-            }
-            setTweets(response);
-            console.log(tweets)
+            await dispatch(fetchTweetsByUser({ filtreTweet, token, userId })).unwrap();
         } catch (error) {
             if (error.response && (error.response.status === 401 || error.response.status === 403)) {
                 showToastError("Veuillez vous reconnecter s'il vous plaît.");
@@ -63,7 +55,7 @@ function UserTweetList({ userId }) {
 
             <div className="flex justify-between items-center mb-4">
                 <div className="flex">
-                    <p className="text-white">{tweets.length} posts</p>
+                    <p className="text-white">{tweets?.length} posts</p>
                 </div>
                 <select className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600"
                     onChange={(e) => setFiltreTweet(e.target.value)}

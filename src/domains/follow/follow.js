@@ -121,12 +121,13 @@ const unfollowApi = async (token, userIdfollower, userIdfollowed) => {
 
 const fecthFollowersApi = async (token, userId) => {
     try {
-        const response = await dbUrl.get(`Follows?followedId=${userId}`, {
+        const response = await dbUrl.get(`Follows?followerId=${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
+        console.log("response fecthFollowersApi :", response)
         return response;
     } catch (error) {
         console.error('Erreur lors de la récupération des followers:', error);
@@ -136,7 +137,7 @@ const fecthFollowersApi = async (token, userId) => {
 
 const fetchFollowingApi = async (token, userId) => {
     try {
-        const response = await dbUrl.get(`Follows?followerId=${userId}`, {
+        const response = await dbUrl.get(`Follows?followedId=${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'

@@ -57,6 +57,7 @@ function Formulaire() {
             dispatch(setIsStayConnected(isStayConnectedToggle));
             dispatch(setToken(response.accessToken));
             dispatch(setIsConnected(true));
+            window.location.reload();
         } catch (error) {
             showToastError("Échec de la connexion. Vérifiez vos identifiants.");
             console.error("Login error:", error);

@@ -46,6 +46,24 @@
       "password": "$2a$10$gRDJ75c2C1uBGb2J4wpa4eSJgC6G9Ao1HPumvyL8t0MpL01paD5E.",
       "date": "2025-03-05T08:26:29.919Z",
       "id": 11
+    },
+    {
+      "email": "test10@test.com",
+      "password": "$2a$10$hg/zbPSaNdcbSG7dOhNMMe5SCOUbFyTyFSWPXJRU7toBTgyzOYlpS",
+      "date": "2025-03-05T15:13:50.756Z",
+      "id": 12
+    },
+    {
+      "email": "test20@gmail.com",
+      "password": "$2a$10$iLM8k0ATDMuCoSzm68RoyuWdpPv9S6.CcOQNoCryszbTEc0WoJv/C",
+      "date": "2025-03-05T15:20:26.067Z",
+      "id": 13
+    },
+    {
+      "email": "test30@gmail.com",
+      "password": "$2a$10$ZcVc4SkixHbo4TqvLYY8BeHg97bL7twy7O7edosanQ3/eSKrEXoBu",
+      "date": "2025-03-05T15:22:08.634Z",
+      "id": 14
     }
   ],
   "tweet": [
@@ -147,6 +165,86 @@
       "likes": 0,
       "comments": 0,
       "id": 18
+    },
+    {
+      "userId": "14",
+      "content": "Hey brozer !",
+      "date": "2025-03-05T15:28:25.784Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 19
+    },
+    {
+      "userId": "14",
+      "content": "test",
+      "date": "2025-03-05T15:28:48.306Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 20
+    },
+    {
+      "userId": "14",
+      "content": "poster",
+      "date": "2025-03-05T15:29:55.853Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 21
+    },
+    {
+      "userId": "14",
+      "content": "OH YES",
+      "date": "2025-03-05T16:07:03.897Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 22
+    },
+    {
+      "userId": "14",
+      "content": "brouttttt",
+      "date": "2025-03-05T16:11:13.244Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 24
+    },
+    {
+      "userId": "1",
+      "content": "test",
+      "date": "2025-03-05T16:24:14.326Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 25
+    },
+    {
+      "userId": "1",
+      "content": "test2",
+      "date": "2025-03-05T16:26:16.021Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 26
+    },
+    {
+      "userId": "1",
+      "content": "YAA",
+      "date": "2025-03-05T16:28:55.453Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 27
+    },
+    {
+      "userId": "1",
+      "content": "test",
+      "date": "2025-03-05T16:49:11.465Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 28
+    },
+    {
+      "userId": "1",
+      "content": "testtttt §§§§",
+      "date": "2025-03-05T17:06:53.118Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 29
     }
   ],
   "Follows": [
@@ -196,6 +294,20 @@
       "requestDate": "2025-03-05T13:33:01.211Z",
       "acceptDate": null,
       "id": 7
+    },
+    {
+      "followerId": "14",
+      "followedId": "9",
+      "requestDate": "2025-03-05T15:27:41.585Z",
+      "acceptDate": null,
+      "id": 8
+    },
+    {
+      "followerId": "14",
+      "followedId": "11",
+      "requestDate": "2025-03-05T16:06:36.450Z",
+      "acceptDate": null,
+      "id": 9
     }
   ],
   "likes": [
@@ -258,6 +370,51 @@
       "tweetId": 3,
       "userId": "1",
       "id": 29
+    },
+    {
+      "tweetId": 18,
+      "userId": "14",
+      "id": 30
+    },
+    {
+      "tweetId": 16,
+      "userId": "14",
+      "id": 31
+    },
+    {
+      "tweetId": 21,
+      "userId": "14",
+      "id": 32
+    },
+    {
+      "tweetId": 24,
+      "userId": "14",
+      "id": 33
+    },
+    {
+      "tweetId": 26,
+      "userId": "1",
+      "id": 34
+    },
+    {
+      "tweetId": 25,
+      "userId": "1",
+      "id": 35
+    },
+    {
+      "tweetId": 27,
+      "userId": "1",
+      "id": 36
+    },
+    {
+      "tweetId": 28,
+      "userId": "1",
+      "id": 37
+    },
+    {
+      "tweetId": 29,
+      "userId": "1",
+      "id": 38
     }
   ]
 }

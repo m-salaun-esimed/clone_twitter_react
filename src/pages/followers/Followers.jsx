@@ -6,6 +6,7 @@ import { CgProfile } from 'react-icons/cg';
 import Loading from '../../shared/components/Loading';
 import NavBar from '../../shared/components/Navbar';
 import { showToastError } from '../../shared/utils/Toast';
+import axios from 'axios';
 
 const Followers = () => {
     const { userId } = useParams();
