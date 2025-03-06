@@ -82,7 +82,7 @@
     {
       "id": 1,
       "userId": "1",
-      "content": "test",
+      "content": "testeee",
       "date": "2025-03-03T12:30:00Z",
       "comments": 5
     },
@@ -292,14 +292,38 @@
     },
     {
       "userId": "1",
-      "content": "salut !cddd",
-      "date": "2025-03-06T08:19:36.743Z",
+      "content": "test",
+      "date": "2025-03-06T12:38:15.164Z",
       "likes": 0,
       "comments": 0,
       "id": 34
+    },
+    {
+      "userId": "1",
+      "content": "gfgfgf",
+      "date": "2025-03-06T12:47:05.410Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 35
+    },
+    {
+      "userId": "1",
+      "content": "test",
+      "date": "2025-03-06T12:49:05.988Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 36
+    },
+    {
+      "userId": "1",
+      "content": "nbjo  ,jkjk",
+      "date": "2025-03-06T12:49:46.486Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 37
     }
   ],
-  "Follows": [
+  "follows": [
     {
       "followerId": 6,
       "followedId": 7,
@@ -361,6 +385,13 @@
       "requestDate": "2025-03-06T06:30:35.272Z",
       "acceptDate": null,
       "id": 10
+    },
+    {
+      "followerId": "1",
+      "followedId": "14",
+      "requestDate": "2025-03-06T08:51:03.322Z",
+      "acceptDate": null,
+      "id": 12
     }
   ],
   "likes": [
@@ -500,19 +531,55 @@
       "id": 46
     },
     {
-      "tweetId": 32,
+      "tweetId": 12,
       "userId": "1",
-      "id": 48
+      "id": 53
     },
     {
-      "tweetId": 33,
+      "tweetId": 35,
       "userId": "1",
-      "id": 51
+      "id": 55
     },
     {
       "tweetId": 34,
       "userId": "1",
-      "id": 52
+      "id": 56
+    },
+    {
+      "tweetId": 33,
+      "userId": "1",
+      "id": 57
+    },
+    {
+      "tweetId": 32,
+      "userId": "1",
+      "id": 58
+    },
+    {
+      "tweetId": 36,
+      "userId": "1",
+      "id": 59
+    },
+    {
+      "tweetId": 37,
+      "userId": "1",
+      "id": 60
+    }
+  ],
+  "notifications_follow": [
+    {
+      "followerId": "1",
+      "followedId": "16",
+      "notificationDate": "2025-03-06T09:01:17.509Z",
+      "isUnfollow": true,
+      "id": 1
+    },
+    {
+      "followerId": "16",
+      "followedId": "1",
+      "notificationDate": "2025-03-06T09:01:17.509Z",
+      "isUnfollow": true,
+      "id": 1
     }
   ]
 }

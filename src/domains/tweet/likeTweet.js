@@ -11,11 +11,6 @@ const likeTweet = async (tweetId, userId, token) => {
                 {
                     tweetId,
                     userId,
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
                 }
             );
             console.log('Tweet liked:', response.data);
@@ -32,12 +27,7 @@ const deleteLikeTweet = async (tweetId, userId, token) => {
     if(isLike){
         try {
             const response =await api.delete(
-                `likes/${likeId}`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
+                `likes/${likeId}`
             );
             console.log('Like supprimé:', response.data);
         } catch (error) {
@@ -51,11 +41,7 @@ const deleteLikeTweet = async (tweetId, userId, token) => {
 
 const checkIfLiked = async (tweetId, userId, token) => {
     try {
-        const response = await api.get(`likes?tweetId=${tweetId}&userId=${userId}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const response = await api.get(`likes?tweetId=${tweetId}&userId=${userId}`);
         return response.data.length > 0;
     } catch (error) {
         console.error('Erreur lors de la vérification du like:', error.response?.data || error.message);
@@ -65,11 +51,7 @@ const checkIfLiked = async (tweetId, userId, token) => {
 
 const getLikeId = async (tweetId, userId, token) => {
     try {
-        const response = await api.get(`likes?tweetId=${tweetId}&userId=${userId}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const response = await api.get(`likes?tweetId=${tweetId}&userId=${userId}`);
 
         console.log("response.data : ", response.data);
 
@@ -86,14 +68,9 @@ const getLikeId = async (tweetId, userId, token) => {
 
 const getNbrLike = async (tweetId, token) => {
     try {
-        const response = await api.get(`likes`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const response = await api.get(`likes`);
 
         const likesForTweet = response.data.filter(like => like.tweetId === tweetId);
-        console.log("likesForTweet : ",likesForTweet, " tweetId : ", tweetId);
         return likesForTweet.length;
     } catch (error) {
         console.error('Erreur lors de la récupération du nombre de likes:', error.response?.data || error.message);

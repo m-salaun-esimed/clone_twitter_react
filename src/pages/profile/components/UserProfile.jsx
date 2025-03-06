@@ -2,9 +2,10 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getName } from "../../../domains/user/user";
 import { Button } from "@mui/material";
-import { showToastSuccess, showToastError } from "../../../shared/utils/Toast"; // Ajout de showToastError
+import { showToastSuccess, showToastError } from "../../../shared/utils/Toast";
 import { counterFollowed, counterFollower, checkIfFollowApi, followApi, unfollowApi } from "../../../domains/follow/follow";
 import { useNavigate } from "react-router-dom";
+import { addNotificationFollow, patchNotificationFollow } from "../../../domains/follow/notificationFollow";
 
 function UserProfile({ userId }) {
   const token = useSelector((state) => state.auth.token);
@@ -71,6 +72,7 @@ function UserProfile({ userId }) {
   const follow = async () => {
     try {
       const response = await followApi(token, userIdSlice, userId);
+      await addNotificationFollow(userIdSlice, userId);
       showToastSuccess(`Ami bien ajouté : ${email}`);
       setIsFollow(true);
     } catch (error) {
@@ -81,6 +83,7 @@ function UserProfile({ userId }) {
   const unfollow = async () => {
     try {
       const response = await unfollowApi(token, userIdSlice, userId);
+      await patchNotificationFollow(userIdSlice, userId);
       showToastSuccess(`Ami bien supprimé : ${email}`);
       setIsFollow(false);
     } catch (error) {

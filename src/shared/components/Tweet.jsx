@@ -52,6 +52,7 @@ function Tweet({ tweet, onTweetUpdate }) {
     const navigateToProfile = () => navigate(`/profile/${tweet.userId}`);
 
     const handleLike = async () => {
+        
         if (isLiked) {
             await deleteLikeTweet(tweet.id, userIdSlice, token);
             setIsLiked(false);

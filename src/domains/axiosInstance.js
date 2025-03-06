@@ -7,7 +7,9 @@ const headers = localStorage.getItem("accessToken") ? {
 const api = axios.create({
     baseURL: 'http://localhost:3000/',
     timeout: 5000,
-    headers
+    headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+    }
 });
 
 api.interceptors.response.use(
@@ -16,10 +18,8 @@ api.interceptors.response.use(
         if (error.response?.status === 401) {
             console.error("Token invalide ou expiré. Déconnexion...");
             localStorage.removeItem("token");
-            window.location.href = "/login";
         }
         return Promise.reject(error);
-    }
-);
+    });
 
 export default api;
