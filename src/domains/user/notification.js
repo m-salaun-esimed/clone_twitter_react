@@ -3,11 +3,12 @@ import api from '../axiosInstance';
 const addNotificationFollow = async (userIdfollower, userIdfollowed) => {
     console.log("userIdfollower, userIdfollowed : ", userIdfollower, userIdfollowed)
     try {
-        const response = await api.post('notifications_follow', {
+        const response = await api.post('notifications', {
             followerId: userIdfollower,
             followedId: userIdfollowed,
             notificationDate: new Date().toISOString(),
-            isUnfollow: false
+            isUnfollow: false,
+            status: "abonnement"
         });
 
         console.log("Follow notification request sent:", response.data);
@@ -20,7 +21,7 @@ const addNotificationFollow = async (userIdfollower, userIdfollowed) => {
 
 const patchNotificationFollow = async (userIdfollower, userIdfollowed) => {
     try {
-        const notifications = await api.get('notifications_follow', {
+        const notifications = await api.get('notifications', {
             params: {
                 followerId: userIdfollower,
                 followedId: userIdfollowed
@@ -29,7 +30,7 @@ const patchNotificationFollow = async (userIdfollower, userIdfollowed) => {
 
         if (notifications.data && notifications.data.length > 0) {
             const notificationId = notifications.data[0].id;
-            const response = await api.patch(`notifications_follow/${notificationId}`, {
+            const response = await api.patch(`notifications/${notificationId}`, {
                 followerId: userIdfollower,
                 followedId: userIdfollowed,
                 notificationDate: new Date().toISOString(),
@@ -52,7 +53,7 @@ const patchNotificationFollow = async (userIdfollower, userIdfollowed) => {
 const getRecentNotificationByUser = async (userId) => {
     try {
         console.log("userID dans getRecentNotificationByUser :", userId)
-        const response = await api.get(`notifications_follow/?followedId=${userId}&_sort=notificationDate&_order=desc`);
+        const response = await api.get(`notifications/?followedId=${userId}&_sort=notificationDate&_order=desc`);
         return response.data;
     } catch (error) {
         console.error('Erreur lors de la récuperation des tweets :', error.response?.data || error.message);

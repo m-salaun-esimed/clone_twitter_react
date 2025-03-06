@@ -2,7 +2,7 @@ import api from '../axiosInstance';
 
 const getRecentTweets = async (token) => {
     try {
-        const response = await api.get('tweet/?_sort=date&_order=desc', {
+        const response = await api.get('tweet/?_sort=date&_order=desc&_embed=likes', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -16,18 +16,29 @@ const getRecentTweets = async (token) => {
 
 const getTopLikedTweets = async (token) => {
     try {
-        const response = await api.get('tweet/', {
+        const response = await api.get('tweet?_embed=likes', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log(response.data);
-        return response.data;
+
+        const tweets = response.data;
+
+        const threeDaysAgo = new Date();
+        threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+
+        const topLikedTweets = tweets
+            .filter(tweet => new Date(tweet.date) >= threeDaysAgo)
+            .sort((a, b) => b.likes.length - a.likes.length);
+
+        console.log(topLikedTweets);
+        return topLikedTweets;
     } catch (error) {
-        console.error('Erreur lors de la récuperation des tweets :', error.response?.data || error.message);
+        console.error('Erreur lors de la récupération des tweets :', error.response?.data || error.message);
         throw error;
     }
 };
+
 
 const getTweetsFollowByOrderDesc = async (token, followsId) => {
     try {
@@ -90,17 +101,28 @@ const getTweetByUser = async (token, userId) => {
 
 const getTopLikedTweetsByUser = async (token, userId) => {
     try {
-        const response = await api.get(`tweet/?userId=${userId}&_sort=likes&_order=desc`, {
+        const response = await api.get(`tweet/?userId=${userId}&_embed=likes`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
-        return response.data;
+
+        const tweets = response.data;
+
+        const threeDaysAgo = new Date();
+        threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+
+        const topLikedTweets = tweets
+            .filter(tweet => new Date(tweet.date) >= threeDaysAgo)
+            .sort((a, b) => b.likes.length - a.likes.length);
+
+        return topLikedTweets;
     } catch (error) {
-        console.error('Erreur lors de la récuperation des tweets :', error.response?.data || error.message);
+        console.error('Erreur lors de la récupération des tweets :', error.response?.data || error.message);
         throw error;
     }
 };
+
 
 const deleteTweet = async (token, tweetId) => {
     try {

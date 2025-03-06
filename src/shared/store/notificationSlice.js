@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addNotificationFollow, getRecentNotificationByUser } from "../../domains/follow/notificationFollow";
+import { addNotificationFollow, getRecentNotificationByUser } from "../../domains/user/notification";
 
 export const fetchNotificationsFollow = createAsyncThunk(
     'notification/fetchNotificationsFollow',

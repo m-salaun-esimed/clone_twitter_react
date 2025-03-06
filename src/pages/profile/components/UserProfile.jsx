@@ -1,21 +1,22 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getName } from "../../../domains/user/user";
 import { Button } from "@mui/material";
 import { showToastSuccess, showToastError } from "../../../shared/utils/Toast";
 import { counterFollowed, counterFollower, checkIfFollowApi, followApi, unfollowApi } from "../../../domains/follow/follow";
 import { useNavigate } from "react-router-dom";
-import { addNotificationFollow, patchNotificationFollow } from "../../../domains/follow/notificationFollow";
+import { addNotificationFollow, patchNotificationFollow } from "../../../domains/user/notification";
+import { setNotificationsFollow } from "../../../shared/store/notificationSlice";
 
 function UserProfile({ userId }) {
   const token = useSelector((state) => state.auth.token);
   const userIdSlice = useSelector((state) => state.auth.userId);
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
-
   const [isFollow, setIsFollow] = useState(false);
   const [followersCount, setFollowersCount] = useState(0);
   const [followedCount, setFollowedCount] = useState(0);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getNameUserApi = async () => {
@@ -72,7 +73,7 @@ function UserProfile({ userId }) {
   const follow = async () => {
     try {
       const response = await followApi(token, userIdSlice, userId);
-      await addNotificationFollow(userIdSlice, userId);
+      await dispatch(setNotificationsFollow({userIdfollower: userIdSlice, userIdfollowed: userId}));
       showToastSuccess(`Ami bien ajouté : ${email}`);
       setIsFollow(true);
     } catch (error) {

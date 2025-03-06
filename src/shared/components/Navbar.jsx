@@ -37,6 +37,7 @@ const NavBar = () => {
                   className="w-16 h-auto mb-4 mx-auto block"
                   alt="Logo"
                 />
+
               </a>
             </li>
             <li>

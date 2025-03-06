@@ -23,6 +23,7 @@ function Tweet({ tweet, onTweetUpdate }) {
     const [editedContent, setEditedContent] = useState(tweet.content);
 
     useEffect(() => {
+        console.log("tweet :", tweet)
         const checkIfUserLiked = async () => {
             const liked = await checkIfLiked(tweet.id, userIdSlice, token);
             setIsLiked(liked);
@@ -38,9 +39,9 @@ function Tweet({ tweet, onTweetUpdate }) {
             setNbrLike(nbrLike);
         };
 
+        getNbrLikeApi();
         checkIfUserLiked();
         getNameApi();
-        getNbrLikeApi();
     }, [tweet.id, userIdSlice, token, nbrLike, isLiked]);
 
     const formatNumber = (num) => {
@@ -52,12 +53,13 @@ function Tweet({ tweet, onTweetUpdate }) {
     const navigateToProfile = () => navigate(`/profile/${tweet.userId}`);
 
     const handleLike = async () => {
-        
+
         if (isLiked) {
             await deleteLikeTweet(tweet.id, userIdSlice, token);
             setIsLiked(false);
         } else {
             await likeTweet(tweet.id, userIdSlice, token);
+            // await addNotification(userIdSlice, tweet.userId, "like");
             setIsLiked(true);
         }
     };
