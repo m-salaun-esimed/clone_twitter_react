@@ -3,6 +3,7 @@ import { FiHome, FiSearch, FiBell, FiMail, FiSend } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
 import { NavLink } from "react-router";
 import { useSelector } from "react-redux";
+import { IoNotificationsOutline } from "react-icons/io5";
 
 const NavBar = () => {
   const userId = useSelector((state) => state.auth.userId);
@@ -46,13 +47,22 @@ const NavBar = () => {
             </li>
             <li>
               <NavLink
+                to={`/notification`}
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <IoNotificationsOutline />
+                <span className="ms-3">Notification</span>
+              </NavLink>
+
+            </li>
+            <li>
+              <NavLink
                 to={`/profile/${userId}`}
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <CgProfile />
                 <span className="ms-3">Profil</span>
               </NavLink>
-
             </li>
           </ul>
         </div>

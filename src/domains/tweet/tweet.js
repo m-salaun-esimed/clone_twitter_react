@@ -1,14 +1,8 @@
-import axios from 'axios';
-
-
-const dbUrl = axios.create({
-    baseURL: 'http://localhost:3000/tweet/',
-    timeout: 5000,
-});
+import api from '../axiosInstance';
 
 const getRecentTweets = async (token) => {
     try {
-        const response = await dbUrl.get('?_sort=date&_order=desc', {
+        const response = await api.get('tweet/?_sort=date&_order=desc', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -22,7 +16,7 @@ const getRecentTweets = async (token) => {
 
 const getTopLikedTweets = async (token) => {
     try {
-        const response = await dbUrl.get('', {
+        const response = await api.get('tweet/', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -42,9 +36,9 @@ const getTweetsFollowByOrderDesc = async (token, followsId) => {
         }
         const queryParams = followsId.map(id => `userId=${id}`).join("&");
 
-        const url = `?${queryParams}&_sort=date&_order=desc`;
+        const url = `tweet/?${queryParams}&_sort=date&_order=desc`;
 
-        const response = await dbUrl.get(url, {
+        const response = await api.get(url, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -68,7 +62,7 @@ const postTweet = async (token, userId, content) => {
     };
 
     try {
-        const response = await dbUrl.post('', tweet, {
+        const response = await api.post('tweet/', tweet, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -82,7 +76,7 @@ const postTweet = async (token, userId, content) => {
 
 const getTweetByUser = async (token, userId) => {
     try {
-        const response = await dbUrl.get(`?userId=${userId}&_sort=date&_order=desc`, {
+        const response = await api.get(`tweet/?userId=${userId}&_sort=date&_order=desc`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -96,7 +90,7 @@ const getTweetByUser = async (token, userId) => {
 
 const getTopLikedTweetsByUser = async (token, userId) => {
     try {
-        const response = await dbUrl.get(`?userId=${userId}&_sort=likes&_order=desc`, {
+        const response = await api.get(`tweet/?userId=${userId}&_sort=likes&_order=desc`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -110,7 +104,7 @@ const getTopLikedTweetsByUser = async (token, userId) => {
 
 const deleteTweet = async (token, tweetId) => {
     try {
-        const response = await dbUrl.delete(`${tweetId}`, {
+        const response = await api.delete(`tweet/${tweetId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -122,9 +116,9 @@ const deleteTweet = async (token, tweetId) => {
     }
 };
 
-const editTweet = async (token, tweetId, newContent) => {
+const editTweetUser = async (token, tweetId, newContent) => {
     try {
-        const response = await dbUrl.patch(`${tweetId}`, {
+        const response = await api.patch(`tweet/${tweetId}`, {
             content: newContent,
         }, {
             headers: {
@@ -138,4 +132,4 @@ const editTweet = async (token, tweetId, newContent) => {
     }
 };
 
-export { getRecentTweets, postTweet, getTopLikedTweets, getTweetByUser, getTopLikedTweetsByUser, getTweetsFollowByOrderDesc, deleteTweet, editTweet };
+export { getRecentTweets, postTweet, getTopLikedTweets, getTweetByUser, getTopLikedTweetsByUser, getTweetsFollowByOrderDesc, deleteTweet, editTweetUser };

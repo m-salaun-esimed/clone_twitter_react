@@ -1,9 +1,4 @@
-import axios from 'axios';
-
-const dbUrl = axios.create({
-    baseURL: 'http://localhost:3000/',
-    timeout: 5000,
-});
+import api from '../axiosInstance';
 
 const likeTweet = async (tweetId, userId, token) => {
     const isLike = await checkIfLiked(tweetId, userId, token); 
@@ -12,8 +7,7 @@ const likeTweet = async (tweetId, userId, token) => {
     }
     else{
         try {
-            const response = await axios.post(
-                'http://localhost:3000/likes',
+            const response = await api.post('likes',
                 {
                     tweetId,
                     userId,
@@ -37,8 +31,8 @@ const deleteLikeTweet = async (tweetId, userId, token) => {
     const isLike = await checkIfLiked(tweetId, userId, token);
     if(isLike){
         try {
-            const response = await axios.delete(
-                `http://localhost:3000/likes/${likeId}`,
+            const response =await api.delete(
+                `likes/${likeId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -57,7 +51,7 @@ const deleteLikeTweet = async (tweetId, userId, token) => {
 
 const checkIfLiked = async (tweetId, userId, token) => {
     try {
-        const response = await axios.get(`http://localhost:3000/likes?tweetId=${tweetId}&userId=${userId}`, {
+        const response = await api.get(`likes?tweetId=${tweetId}&userId=${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -71,7 +65,7 @@ const checkIfLiked = async (tweetId, userId, token) => {
 
 const getLikeId = async (tweetId, userId, token) => {
     try {
-        const response = await axios.get(`http://localhost:3000/likes?tweetId=${tweetId}&userId=${userId}`, {
+        const response = await api.get(`likes?tweetId=${tweetId}&userId=${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -92,7 +86,7 @@ const getLikeId = async (tweetId, userId, token) => {
 
 const getNbrLike = async (tweetId, token) => {
     try {
-        const response = await axios.get(`http://localhost:3000/likes`, {
+        const response = await api.get(`likes`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

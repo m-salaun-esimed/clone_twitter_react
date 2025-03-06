@@ -54,6 +54,7 @@ function Formulaire() {
 
         try {
             await dispatch(postLogin({ trimmedEmail, trimmedPassword, isStayConnectedToggle }));
+            window.location.reload();
         } catch (error) {
             showToastError("Échec de la connexion. Vérifiez vos identifiants.");
             console.error("Login error:", error);

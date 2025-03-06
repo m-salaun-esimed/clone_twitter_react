@@ -9,8 +9,9 @@ import Register from './pages/register/page/Register.jsx';
 import store  from './shared/store/store.js'
 import Home from './pages/home/page/Home.jsx';
 import Profile from './pages/profile/page/Profile.jsx';
-import Followers from './pages/followers/Followers.jsx';
+import Followers from './pages/follower/Followers.jsx';
 import Following from './pages/following/Following.jsx';
+import Notification from './pages/notification/Notification.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -25,7 +26,8 @@ createRoot(document.getElementById('root')).render(
           <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/followers/:userId" element={<Followers />} />
           <Route path="/following/:userId" element={<Following />} />
-
+          <Route path="/notification" element={<Notification />} />
+          <Route path="/disconnect" element={<Notification />} />      
         </Routes>
       </BrowserRouter>
     </Provider>

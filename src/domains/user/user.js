@@ -1,13 +1,8 @@
-import axios from 'axios';
-
-const dbUrl = axios.create({
-    baseURL: 'http://localhost:3000/',
-    timeout: 5000,
-});
+import api from '../axiosInstance';
 
 const getName = async (userId, token) => {
     try {
-        const response = await dbUrl.get(`users/${userId}`, {
+        const response = await api.get(`users/${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -21,7 +16,7 @@ const getName = async (userId, token) => {
 
 const checkTokenValidity = async (token, userId) => {
     try {
-        const response = await dbUrl.get(`600/users/${userId}`, {
+        const response = await api.get(`600/users/${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

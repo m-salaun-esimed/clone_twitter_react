@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getRecentTweets, getTopLikedTweets, getTopLikedTweetsByUser, getTweetByUser, getTweetsFollowByOrderDesc } from '../../domains/tweet/tweet.js';
+import { editTweetUser, getRecentTweets, getTopLikedTweets, getTopLikedTweetsByUser, getTweetByUser, getTweetsFollowByOrderDesc } from '../../domains/tweet/tweet.js';
 import { getFollowsIds } from '../../domains/follow/follow.js';
 
 export const fetchTweets = createAsyncThunk(
@@ -38,6 +38,19 @@ export const fetchTweetsByUser = createAsyncThunk(
         }
     }
 );
+
+export const editTweet = createAsyncThunk(
+    'tweet/editTweet',
+    async ({ tweetId, editedContent, token }, { rejectWithValue }) => {
+        console.log("editTweet tweetId : ", tweetId)
+        try {
+            await editTweetUser(token, tweetId, editedContent).unwrap();
+        } catch (error) {
+            return rejectWithValue(error.response?.data || "Erreur inconnue");
+        }
+    }
+);
+
 
 const TweetSlice = createSlice({
     name: 'tweet',
@@ -78,7 +91,7 @@ const TweetSlice = createSlice({
             .addCase(fetchTweetsByUser.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.payload;
-            });
+            })
     }
 });
 

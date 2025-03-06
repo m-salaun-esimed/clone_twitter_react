@@ -1,13 +1,8 @@
-import axios from 'axios';
-
-const dbUrl = axios.create({
-    baseURL: 'http://localhost:3000/',
-    timeout: 5000,
-});
+import api from '../axiosInstance';
 
 const followApi = async (token, userIdfollower, userIdfollowed) => {
     try {
-        const response = await dbUrl.post('follows', {
+        const response = await api.post('follows', {
             followerId: userIdfollower,
             followedId: userIdfollowed,
             requestDate: new Date().toISOString(),
@@ -29,7 +24,7 @@ const followApi = async (token, userIdfollower, userIdfollowed) => {
 
 const counterFollowed = async (token, userId) => {
     try {
-        const response = await dbUrl.get(`follows?followedId=${userId}`, {
+        const response = await api.get(`follows?followedId=${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -44,7 +39,7 @@ const counterFollowed = async (token, userId) => {
 
 const counterFollower = async (token, userId) => {
     try {
-        const response = await dbUrl.get(`follows?followerId=${userId}`, {
+        const response = await api.get(`follows?followerId=${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -59,7 +54,7 @@ const counterFollower = async (token, userId) => {
 
 const getFollowsIds = async (token, userId) => {
     try {
-        const response = await dbUrl.get(`follows?followerId=${userId}`, {
+        const response = await api.get(`follows?followerId=${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -74,7 +69,7 @@ const getFollowsIds = async (token, userId) => {
 
 const checkIfFollowApi = async (token, userIdfollower, userIdFollowed) => {
     try {
-        const response = await dbUrl.get(`follows?followerId=${userIdfollower}&followedId=${userIdFollowed}`, {
+        const response = await api.get(`follows?followerId=${userIdfollower}&followedId=${userIdFollowed}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -93,7 +88,7 @@ const checkIfFollowApi = async (token, userIdfollower, userIdFollowed) => {
 
 const unfollowApi = async (token, userIdfollower, userIdfollowed) => {
     try {
-        const response = await dbUrl.get(`follows?followerId=${userIdfollower}&followedId=${userIdfollowed}`, {
+        const response = await api.get(`follows?followerId=${userIdfollower}&followedId=${userIdfollowed}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -105,7 +100,7 @@ const unfollowApi = async (token, userIdfollower, userIdfollowed) => {
 
         const followId = response.data[0].id;
 
-        const deleteResponse = await dbUrl.delete(`follows/${followId}`, {
+        const deleteResponse = await api.delete(`follows/${followId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -121,7 +116,7 @@ const unfollowApi = async (token, userIdfollower, userIdfollowed) => {
 
 const fecthFollowersApi = async (token, userId) => {
     try {
-        const response = await dbUrl.get(`Follows?followerId=${userId}`, {
+        const response = await api.get(`Follows?followerId=${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -137,7 +132,7 @@ const fecthFollowersApi = async (token, userId) => {
 
 const fetchFollowingApi = async (token, userId) => {
     try {
-        const response = await dbUrl.get(`Follows?followedId=${userId}`, {
+        const response = await api.get(`Follows?followedId=${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'

@@ -36,6 +36,7 @@ const ListTweet = () => {
     }, [token, filtreTweet]);
 
     const handleTweetUpdate = () => {
+        console.log("handleTweetUpdate")
         getTweets();
     };
 

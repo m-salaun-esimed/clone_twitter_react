@@ -265,15 +265,41 @@
       "likes": 0,
       "comments": 0,
       "id": 30
+    },
+    {
+      "userId": "16",
+      "content": "test",
+      "date": "2025-03-06T06:35:51.207Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 31
+    },
+    {
+      "userId": "16",
+      "content": "test",
+      "date": "2025-03-06T06:37:08.522Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 32
+    },
+    {
+      "userId": "16",
+      "content": "lol",
+      "date": "2025-03-06T07:23:52.808Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 33
+    },
+    {
+      "userId": "1",
+      "content": "salut !cddd",
+      "date": "2025-03-06T08:19:36.743Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 34
     }
   ],
   "Follows": [
-    {
-      "id": 1,
-      "followerId": 1,
-      "followedId": 2,
-      "requestDate": "2025-03-03T12:30:00Z"
-    },
     {
       "followerId": 6,
       "followedId": 7,
@@ -447,6 +473,46 @@
       "tweetId": 30,
       "userId": "1",
       "id": 39
+    },
+    {
+      "tweetId": 30,
+      "userId": "16",
+      "id": 40
+    },
+    {
+      "tweetId": 29,
+      "userId": "16",
+      "id": 41
+    },
+    {
+      "tweetId": 32,
+      "userId": "16",
+      "id": 44
+    },
+    {
+      "tweetId": 31,
+      "userId": "16",
+      "id": 45
+    },
+    {
+      "tweetId": 33,
+      "userId": "16",
+      "id": 46
+    },
+    {
+      "tweetId": 32,
+      "userId": "1",
+      "id": 48
+    },
+    {
+      "tweetId": 33,
+      "userId": "1",
+      "id": 51
+    },
+    {
+      "tweetId": 34,
+      "userId": "1",
+      "id": 52
     }
   ]
 }
