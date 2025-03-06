@@ -6,6 +6,8 @@ import { FiX } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import { postTweet } from '../../../domains/tweet/tweet';
 import Loading from '../../../shared/components/Loading';
+import { showToastSuccess } from '../../../shared/utils/Toast';
+import { ToastContainer } from 'react-toastify';
 
 function ModalPostTweet({ onTweetUpdate }) {
     const [tweet, setTweet] = useState("");
@@ -26,6 +28,7 @@ function ModalPostTweet({ onTweetUpdate }) {
             if(onTweetUpdate){
                 onTweetUpdate()
             }
+            showToastSuccess("Tweet posté !");
             handleTweetUpdate();
         } catch (error) {
             console.error("Failed to post tweet:", error);

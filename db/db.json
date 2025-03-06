@@ -64,6 +64,18 @@
       "password": "$2a$10$ZcVc4SkixHbo4TqvLYY8BeHg97bL7twy7O7edosanQ3/eSKrEXoBu",
       "date": "2025-03-05T15:22:08.634Z",
       "id": 14
+    },
+    {
+      "email": "baguette@gmail.com",
+      "password": "$2a$10$6ly2rTCEou7bstGu/uWavurl6HUHwhFIPae1EgLQg4rFoh98e5qX6",
+      "date": "2025-03-06T06:17:22.253Z",
+      "id": 15
+    },
+    {
+      "email": "baguette2@gmail.com",
+      "password": "$2a$10$A2J.B3kNute3uLtfpgkFxeJZm1jhJ8m8TJViR/92DjPP68Roh58rO",
+      "date": "2025-03-06T06:18:03.050Z",
+      "id": 16
     }
   ],
   "tweet": [
@@ -245,6 +257,14 @@
       "likes": 0,
       "comments": 0,
       "id": 29
+    },
+    {
+      "userId": "1",
+      "content": "test",
+      "date": "2025-03-06T06:12:03.758Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 30
     }
   ],
   "Follows": [
@@ -308,6 +328,13 @@
       "requestDate": "2025-03-05T16:06:36.450Z",
       "acceptDate": null,
       "id": 9
+    },
+    {
+      "followerId": "16",
+      "followedId": "1",
+      "requestDate": "2025-03-06T06:30:35.272Z",
+      "acceptDate": null,
+      "id": 10
     }
   ],
   "likes": [
@@ -415,6 +442,11 @@
       "tweetId": 29,
       "userId": "1",
       "id": 38
+    },
+    {
+      "tweetId": 30,
+      "userId": "1",
+      "id": 39
     }
   ]
 }

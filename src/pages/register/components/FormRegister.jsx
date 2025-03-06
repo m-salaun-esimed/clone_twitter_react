@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { setIsConnected, setToken, setIsStayConnected, setUserId } from "../../../shared/store/authSlice.js";
-import { registerApi } from "../../../domains/authentitification/auth.js";
+import { postRegister } from "../../../shared/store/authSlice.js";
 import { showToastError } from "../../../shared/utils/Toast.jsx"
+import { ToastContainer } from "react-toastify";
 
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
@@ -14,8 +14,6 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Switch from '@mui/material/Switch';
-import { ToastContainer } from "react-toastify";
-import { jwtDecode } from "jwt-decode";
 
 function FormRegister() {
     const [email, setEmail] = useState("");
@@ -71,12 +69,7 @@ function FormRegister() {
         }
 
         try {
-            let response = await registerApi(email, password);
-            dispatch(setIsStayConnected(isStayConnectedToggle));
-            dispatch(setToken(response.accessToken));
-            const userId = jwtDecode(localStorage.getItem("accessToken")).sub;
-            dispatch(setUserId(userId))
-            dispatch(setIsConnected(true));
+            await dispatch(postRegister({ email, password, isStayConnectedToggle }));;
             window.location.reload();
         } catch (error) {
         }

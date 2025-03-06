@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { loginAPI } from "../../../domains/authentitification/auth.js";
+import { loginApi } from "../../../domains/authentitification/auth.js";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { setIsConnected, setToken, setIsStayConnected, setUserId } from "../../../shared/store/authSlice.js";
+import { postLogin } from "../../../shared/store/authSlice.js";
 import { showToastError } from "../../../shared/utils/Toast.jsx";
 
 import Button from '@mui/material/Button';
@@ -34,7 +34,7 @@ function Formulaire() {
         if (isConnected) {
             navigate('/');
         }
-    }, [isConnected, navigate]); 
+    }, [isConnected, navigate]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -53,11 +53,7 @@ function Formulaire() {
         }
 
         try {
-            let response = await loginAPI(trimmedEmail, trimmedPassword);
-            dispatch(setIsStayConnected(isStayConnectedToggle));
-            dispatch(setToken(response.accessToken));
-            dispatch(setIsConnected(true));
-            window.location.reload();
+            await dispatch(postLogin({ trimmedEmail, trimmedPassword, isStayConnectedToggle }));
         } catch (error) {
             showToastError("Échec de la connexion. Vérifiez vos identifiants.");
             console.error("Login error:", error);

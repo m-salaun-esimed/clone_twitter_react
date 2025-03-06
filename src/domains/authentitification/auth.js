@@ -5,7 +5,7 @@ const dbUrl = axios.create({
     timeout: 5000,
 });
 
-const loginAPI = async (email, password) => {
+const loginApi = async (email, password) => {
     try {
         const response = await dbUrl.post('login', { email, password });
         return response.data;
@@ -34,4 +34,4 @@ const registerApi = async (email, password) => {
 
 
 
-export { loginAPI, registerApi };
+export { loginApi, registerApi };

@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import { getName } from "../../../domains/user/user";
 import { Button } from "@mui/material";
 import { showToastSuccess, showToastError } from "../../../shared/utils/Toast"; // Ajout de showToastError
-import { counterFollowed, counterFollower, checkIfFollowApi, followApi, unfollowApi  } from "../../../domains/follow/follow";
+import { counterFollowed, counterFollower, checkIfFollowApi, followApi, unfollowApi } from "../../../domains/follow/follow";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 function UserProfile({ userId }) {
   const token = useSelector((state) => state.auth.token);
@@ -130,13 +131,13 @@ function UserProfile({ userId }) {
             {/* <p className="text-gray-500 text-sm mt-1">📅 A rejoint X en septembre 2017</p> */}
 
             <div className="mt-2 flex justify-center md:justify-start space-x-4 text-sm text-gray-400">
-              <button 
+              <button
                 onClick={handleFollowingClick}
                 className={`hover:underline ${userId === userIdSlice ? 'cursor-pointer' : 'cursor-default'}`}
               >
                 <span><strong className="text-white">{followersCount}</strong> abonnements</span>
               </button>
-              <button 
+              <button
                 onClick={handleFollowersClick}
                 className={`hover:underline ${userId === userIdSlice ? 'cursor-pointer' : 'cursor-default'}`}
               >

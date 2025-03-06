@@ -9,9 +9,10 @@ import { checkIfLiked, likeTweet, deleteLikeTweet, getNbrLike } from '../../doma
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { deleteTweet, editTweet } from '../../domains/tweet/tweet.js';
-import { showToastError } from '../utils/Toast.jsx';
+import { showToastError, showToastSuccess } from '../utils/Toast.jsx';
+import { ToastContainer } from 'react-toastify';
 
-function Tweet({ tweet, onTweetUpdate  }) {
+function Tweet({ tweet, onTweetUpdate }) {
     const navigate = useNavigate();
     const userIdSlice = useSelector((state) => state.auth.userId)
     const token = useSelector((state) => state.auth.token)
@@ -33,8 +34,8 @@ function Tweet({ tweet, onTweetUpdate  }) {
         }
 
         const getNbrLikeApi = async () => {
-            const nbrLike = await getNbrLike( tweet.id ,token);
-            console.log("nbrLike : ",nbrLike);
+            const nbrLike = await getNbrLike(tweet.id, token);
+            console.log("nbrLike : ", nbrLike);
             setNbrLike(nbrLike);
         }
 
@@ -81,6 +82,7 @@ function Tweet({ tweet, onTweetUpdate  }) {
         if (window.confirm('Êtes-vous sûr de vouloir supprimer ce tweet ?')) {
             try {
                 await deleteTweet(token, tweet.id);
+                showToastSuccess("Tweet supprimé avec succès !")
                 if (onTweetUpdate) {
                     onTweetUpdate();
                 }
@@ -95,6 +97,7 @@ function Tweet({ tweet, onTweetUpdate  }) {
         if (isEditing) {
             try {
                 await editTweet(token, tweet.id, editedContent);
+                showToastSuccess("Tweet modifié avec succès !")
                 setIsEditing(false);
                 if (onTweetUpdate) {
                     onTweetUpdate();
@@ -152,7 +155,7 @@ function Tweet({ tweet, onTweetUpdate  }) {
                     <div className="text-gray-500 dark:text-gray-400 flex mt-3">
                         <div className="flex items-center mr-6">
                             <button onClick={handleLike}>
-                                {isLiked ? <IoHeartSharp color='red'/> : <IoHeartOutline />}
+                                {isLiked ? <IoHeartSharp color='red' /> : <IoHeartOutline />}
                             </button>
                             <span className="ml-3" >{formatLikes(nbrLike)} </span>
                         </div>
@@ -166,13 +169,13 @@ function Tweet({ tweet, onTweetUpdate  }) {
                         </div>
                         {userIdSlice === tweet.userId && (
                             <div className="flex space-x-2">
-                                <button 
+                                <button
                                     onClick={handleEdit}
                                     className="text-blue-500 hover:text-blue-700"
                                 >
                                     <FaEdit size={20} />
                                 </button>
-                                <button 
+                                <button
                                     onClick={handleDelete}
                                     className="text-red-500 hover:text-red-700"
                                 >
