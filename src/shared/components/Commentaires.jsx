@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IoAddOutline } from "react-icons/io5";
 import { Button, Dialog, DialogActions, TextField, Avatar, Typography } from '@mui/material';
 import { CgProfile } from 'react-icons/cg';
+import { addComment, updateTweetAfterComment } from '../store/tweetSlice';
 
 function Commentaires({ tweet, userName }) {
     const token = useSelector((state) => state.auth.token);
+    const userIdSlice = useSelector((state) => state.auth.userId);
     const [commentUsers, setCommentUsers] = useState({});
     const [open, setOpen] = useState(false);
     const [newComment, setNewComment] = useState("");
@@ -25,7 +27,7 @@ function Commentaires({ tweet, userName }) {
         };
 
         fetchNames();
-    }, [tweet.commentaires, token]);
+    }, [tweet.comments, token]);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -37,9 +39,21 @@ function Commentaires({ tweet, userName }) {
     };
 
     const handleAddComment = () => {
-        console.log("Nouveau commentaire :", newComment);
+        console.log("Nouveau commentaire :", newComment);
+        
+        dispatch(addComment({ tweetId: tweet.id, content: newComment, userId: userIdSlice }))
+            .unwrap()
+            .then(() => {
+                dispatch(updateTweetAfterComment({ tweetId: tweet.id }));
+            })
+            .catch((error) => {
+                console.error("Erreur lors de l'ajout du commentaire :", error);
+            });
+    
         handleClose();
     };
+
+    const sortedComments = [...tweet.comments].sort((a, b) => new Date(b.date) - new Date(a.date));
 
     return (
         <Fragment>
@@ -49,8 +63,8 @@ function Commentaires({ tweet, userName }) {
                     <Button color="success" onClick={handleClickOpen}><IoAddOutline className="w-5 h-5"/></Button>
                 </div>
 
-                {tweet.comments.length > 0 ? (
-                    tweet.comments.map((commentaire, index) => (
+                {sortedComments.length > 0 ? (
+                    sortedComments.map((commentaire, index) => (
                         <div key={index} className="p-2 border-b border-gray-300 dark:border-gray-600">
                             <p className="text-black dark:text-white text-sm">
                                 {commentUsers[commentaire.userId] || 'Chargement...'}

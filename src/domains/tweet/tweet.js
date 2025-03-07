@@ -153,4 +153,17 @@ const editTweetUser = async (token, tweetId, newContent) => {
     }
 };
 
-export { getRecentTweets, postTweet, getTopLikedTweets, getTweetByUser, getTopLikedTweetsByUser, getTweetsFollowByOrderDesc, deleteTweet, editTweetUser };
+const updateTweet = async (tweetId) => {
+    try {
+        const response = await api.get(`tweets/?id=${tweetId}&_embed=comments`);
+        const tweet = response.data;
+        console.log("tweet", tweet)
+        return tweet;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des tweets :', error.response?.data || error.message);
+        throw error;
+    }
+};
+
+
+export { updateTweet, getRecentTweets, postTweet, getTopLikedTweets, getTweetByUser, getTopLikedTweetsByUser, getTweetsFollowByOrderDesc, deleteTweet, editTweetUser };

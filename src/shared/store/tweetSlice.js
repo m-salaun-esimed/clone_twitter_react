@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { editTweetUser, getRecentTweets, getTopLikedTweets, getTopLikedTweetsByUser, getTweetByUser, getTweetsFollowByOrderDesc } from '../../domains/tweet/tweet.js';
+import { editTweetUser, getRecentTweets, getTopLikedTweets, getTopLikedTweetsByUser, getTweetByUser, getTweetsFollowByOrderDesc, updateTweet } from '../../domains/tweet/tweet.js';
 import { getFollowsIds } from '../../domains/follow/follow.js';
+import { postComment } from '../../domains/tweet/commentTweet.js';
+import { showToastSuccess } from '../utils/Toast.jsx';
 
 export const fetchTweets = createAsyncThunk(
     'tweet/fetchTweets',
@@ -50,6 +52,32 @@ export const editTweet = createAsyncThunk(
     }
 );
 
+export const addComment = createAsyncThunk(
+    'tweet/addComment',
+    async ({ tweetId, content, userId }, { rejectWithValue }) => {
+        try {
+            await postComment(tweetId, content, userId);
+            return { tweetId };
+        } catch (error) {
+            return rejectWithValue(error.response?.data || "Erreur inconnue");
+        }
+    }
+);
+export const updateTweetAfterComment = createAsyncThunk(
+    'tweet/updateTweetAfterComment',
+    async ({ tweetId }, { rejectWithValue }) => {
+        console.log("updateTweetAfterComment")
+        try {
+            const response = await updateTweet(tweetId);
+            console.log("response ;", response)
+
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || "Erreur inconnue");
+        }
+    }
+);
+
 const TweetSlice = createSlice({
     name: 'tweet',
     initialState: {
@@ -90,6 +118,25 @@ const TweetSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.payload;
             })
+            //addComments
+            .addCase(addComment.fulfilled, (state, action) => {
+                showToastSuccess("Commentaire posté !");
+            })
+            .addCase(addComment.rejected, (state, action) => {
+                toast.error("Erreur lors de la publication du commentaire.");
+                state.error = action.payload;
+            })
+            //update comment
+            .addCase(updateTweetAfterComment.fulfilled, (state, action) => {
+                if (state.tweets && Array.isArray(action.payload) && action.payload.length > 0) {
+                    const updatedTweet = action.payload[0];
+                    const index = state.tweets.findIndex(tweet => tweet.id === updatedTweet.id);
+                    if (index !== -1) {
+                        state.tweets[index] = updatedTweet;
+                    }
+                }
+            })
+            
     }
 });
 
