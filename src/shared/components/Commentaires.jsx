@@ -74,7 +74,7 @@ function Commentaires({ tweet, userName }) {
         <Fragment>
             <div className="mt-3 bg-gray-100 dark:bg-gray-700 p-3 rounded-lg max-h-40 overflow-y-auto">
                 <div className='flex'>
-                    <h1>Commentaires : </h1>
+                    <h1 className='text-white'>Commentaires : </h1>
                     <Button color="success" onClick={handleClickOpen}><IoAddOutline className="w-5 h-5" /></Button>
                 </div>
 
@@ -102,7 +102,7 @@ function Commentaires({ tweet, userName }) {
 
             <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth sx={{ '& .MuiDialog-paper': { backgroundColor: 'black', color: 'white' } }}>
                 <div className="p-4">
-                    <h1 >{userName}</h1>
+                    <h1 className='text-white'>Tweet de : {userName}</h1>
                     <div className="flex">
                         <CgProfile className="w-10 h-10 text-gray-400 dark:text-white cursor-pointer" />
                         <div className="ml-2 flex-1">
