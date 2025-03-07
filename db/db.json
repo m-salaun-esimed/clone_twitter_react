@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "email": "test@test.com",
+      "email": "tweeter@test.com",
       "password": "$2a$10$t0QFuSqJNy/6H36cLU5owuPj0BB8Bg7f2JFY55.XDXiCqFHtBVD0S"
     },
     {

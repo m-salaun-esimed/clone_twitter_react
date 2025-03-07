@@ -6,6 +6,7 @@ import { postTweet } from '../../../domains/tweet/tweet';
 import Loading from '../../../shared/components/Loading';
 import { showToastSuccess } from '../../../shared/utils/Toast';
 import EmojiPicker from 'emoji-picker-react';
+import { Theme } from 'emoji-picker-react';
 
 function ModalPostTweet({ onTweetUpdate }) {
     const [tweet, setTweet] = useState("");
@@ -82,7 +83,7 @@ function ModalPostTweet({ onTweetUpdate }) {
                             </button>
                             {showEmojiPicker && (
                                 <div ref={emojiPickerRef} className="absolute left-4 z-10 bottom-[-25rem] sm:bottom-[-25rem]">
-                                    <EmojiPicker onEmojiClick={handleEmojiClick} />
+                                    <EmojiPicker onEmojiClick={handleEmojiClick} theme={Theme.DARK} />
                                 </div>
                             )}
 
