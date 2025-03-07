@@ -15,4 +15,15 @@ const postComment = async (tweetId, content, userId) => {
     }
 };
 
-export { postComment };
+const deleteComment = async (commentId) => {
+    try {
+        const response = await api.delete(`/comments/${commentId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Erreur lors de la suppression du commentaire :', error.response?.data || error.message);
+        throw error;
+    }
+};
+
+
+export { postComment, deleteComment };

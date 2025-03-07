@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { editTweetUser, getRecentTweets, getTopLikedTweets, getTopLikedTweetsByUser, getTweetByUser, getTweetsFollowByOrderDesc, updateTweet } from '../../domains/tweet/tweet.js';
 import { getFollowsIds } from '../../domains/follow/follow.js';
-import { postComment } from '../../domains/tweet/commentTweet.js';
+import { deleteComment, postComment } from '../../domains/tweet/commentTweet.js';
 import { showToastSuccess } from '../utils/Toast.jsx';
 
 export const fetchTweets = createAsyncThunk(
@@ -78,6 +78,19 @@ export const updateTweetAfterComment = createAsyncThunk(
     }
 );
 
+export const deleteCommentSlice = createAsyncThunk(
+    'tweet/deleteCommentSlice',
+    async ({ commentId }, { rejectWithValue }) => {
+        try {
+            const response = await deleteComment(commentId);
+            console.log("response ;", response)
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || "Erreur inconnue");
+        }
+    }
+);
+
 const TweetSlice = createSlice({
     name: 'tweet',
     initialState: {
@@ -126,6 +139,10 @@ const TweetSlice = createSlice({
                 toast.error("Erreur lors de la publication du commentaire.");
                 state.error = action.payload;
             })
+            //deleteComment
+            .addCase(deleteCommentSlice.fulfilled, (state, action) => {
+                showToastSuccess("Commentaire supprimé !");
+            })
             //update comment
             .addCase(updateTweetAfterComment.fulfilled, (state, action) => {
                 if (state.tweets && Array.isArray(action.payload) && action.payload.length > 0) {
@@ -135,8 +152,7 @@ const TweetSlice = createSlice({
                         state.tweets[index] = updatedTweet;
                     }
                 }
-            })
-            
+            })            
     }
 });
 

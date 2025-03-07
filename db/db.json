@@ -6,132 +6,124 @@
       "password": "$2a$10$t0QFuSqJNy/6H36cLU5owuPj0BB8Bg7f2JFY55.XDXiCqFHtBVD0S"
     },
     {
-      "email": "carine@gmail.com",
-      "password": "$2a$10$mkIiunJU.CVJRDwEK6nFAuBVd0KFtEZnQ4h.28Br4pbz32A7GQxLK",
-      "id": 2
-    },
-    {
-      "email": "jeremy@gmail.com",
-      "password": "$2a$10$tyuM1UguUXYL7sNTRRDumOsZTQZffV6yqwkS0GFnriSKevYizt7sm",
-      "id": 4
-    },
-    {
-      "email": "matthieu@gmail.com",
-      "password": "$2a$10$4Ms9Dr3vJ9NKbAJuWi1hne3jDYlPO4ui16.htXBBHmbOi/7VHGn02",
-      "id": 5
-    },
-    {
-      "email": "test1@test.com",
-      "password": "$2a$10$rrqjkIyzCt3/20mZgvx.Y.gjE8iDayNeIt73D3hAsU8mep40v9noi",
-      "id": 7
-    },
-    {
-      "email": "test2@gmail.com",
-      "password": "$2a$10$GocmZz.pyszI4KRyYw4kAuvOXoSNyjo3iDtUBfuS0bdMoURTnn1mC",
-      "id": 8
-    },
-    {
-      "email": "franck@gmail.com",
-      "password": "$2a$10$KUJQ1uzx/6v4195jl6Gus.4OLMwrPHT2kMsTIoFINbqamx2ujS7VO",
-      "id": 9
-    },
-    {
-      "email": "nathan@gmail.com",
-      "password": "$2a$10$JBtPwee4AyllmvQB3kLQ8.UYJyHzjN318o4GY3E.oJ2VMg6VkeRUG",
-      "date": "2025-03-05T08:23:31.606Z",
-      "id": 10
-    },
-    {
       "email": "leana@gmail.com",
       "password": "$2a$10$gRDJ75c2C1uBGb2J4wpa4eSJgC6G9Ao1HPumvyL8t0MpL01paD5E.",
       "date": "2025-03-05T08:26:29.919Z",
       "id": 11
     },
     {
-      "email": "test10@test.com",
-      "password": "$2a$10$hg/zbPSaNdcbSG7dOhNMMe5SCOUbFyTyFSWPXJRU7toBTgyzOYlpS",
-      "date": "2025-03-05T15:13:50.756Z",
+      "email": "nathan@gmail.com",
+      "password": "$2a$10$LlRUHrI6jpXvB3c5Hty5vuE0XSq3ElltOrQPmUpI5mrKBE1t.bX/a",
+      "date": "2025-03-07T08:39:24.528Z",
       "id": 12
     },
     {
-      "email": "test20@gmail.com",
-      "password": "$2a$10$iLM8k0ATDMuCoSzm68RoyuWdpPv9S6.CcOQNoCryszbTEc0WoJv/C",
-      "date": "2025-03-05T15:20:26.067Z",
+      "email": "jeremy@gmail.com",
+      "password": "$2a$10$JuPVQ4f3ex/26FHffR5fr.mrkqBA33/8vno2QZCWBUYFRer57S5IG",
+      "date": "2025-03-07T08:40:15.772Z",
       "id": 13
     },
     {
-      "email": "test30@gmail.com",
-      "password": "$2a$10$ZcVc4SkixHbo4TqvLYY8BeHg97bL7twy7O7edosanQ3/eSKrEXoBu",
-      "date": "2025-03-05T15:22:08.634Z",
+      "email": "axel@gmail.com",
+      "password": "$2a$10$Ae2jOr2stJFxgWmaGQ72nueslAeTbeaHiD.aJnor2gxWJCBd5fewG",
+      "date": "2025-03-07T08:42:46.739Z",
       "id": 14
     },
     {
-      "email": "baguette@gmail.com",
-      "password": "$2a$10$6ly2rTCEou7bstGu/uWavurl6HUHwhFIPae1EgLQg4rFoh98e5qX6",
-      "date": "2025-03-06T06:17:22.253Z",
+      "email": "clement@gmail.com",
+      "password": "$2a$10$XRTWwJWZgJSH2N/baI4dAOg3sVuTuw7YK4yliI/Y10F4FN/o03RFu",
+      "date": "2025-03-07T08:44:21.376Z",
       "id": 15
     },
     {
-      "email": "baguette2@gmail.com",
-      "password": "$2a$10$A2J.B3kNute3uLtfpgkFxeJZm1jhJ8m8TJViR/92DjPP68Roh58rO",
-      "date": "2025-03-06T06:18:03.050Z",
+      "email": "lucas@gmail.com",
+      "password": "$2a$10$i49LhTgnEVEwKjaWVw64NOFivPN/S3IRuEKvScbM5B/2V6C5qQixi",
+      "date": "2025-03-07T08:47:34.880Z",
       "id": 16
     },
     {
-      "email": "oui@oui.com",
-      "password": "$2a$10$t3Qqbq6yG1mr8kdkz9vLJO6RhdOYR5w.NZR7c3tSKmWdzVhcWNuQS",
-      "date": "2025-03-06T19:16:15.153Z",
+      "email": "gregoire.karydes@gmail.com",
+      "password": "$2a$10$Uq.Mk4SM1fjW1YBmsk75V.DnsXWj.y.2mqQ3oWKpJWce60QgM75vq",
+      "date": "2025-03-07T08:55:08.335Z",
       "id": 17
+    },
+    {
+      "email": "missak@gmail.com",
+      "password": "$2a$10$HTsyZaslZegbQu3gbJl3pOULAgjhhtt74gIl10zmheVXSBmyfs1fC",
+      "date": "2025-03-07T08:58:01.063Z",
+      "id": 18
+    },
+    {
+      "email": "test2@gmail.com",
+      "password": "$2a$10$xVtAEmkoQShwwHyqYmjYPO/qE5/c5T742byCmkkt5DXAlJExpiN.C",
+      "date": "2025-03-07T09:01:35.878Z",
+      "id": 19
     }
   ],
   "tweets": [
     {
-      "userId": "11",
-      "content": "Hey !",
-      "date": "2025-03-06T19:55:30.051Z",
+      "userId": "1",
+      "content": "Salut twitter !",
+      "date": "2025-03-07T08:33:49.193Z",
       "likes": 0,
       "comments": 0,
       "id": 1
     },
     {
       "userId": "1",
-      "content": "Hey tweeter!",
-      "date": "2025-03-06T19:55:30.051Z",
+      "content": "Quelqu’un d’autre trouve que les cookies du crous ont un goût magique, ou c’est juste moi ? 🍪",
+      "date": "2025-03-07T08:35:53.677Z",
       "likes": 0,
       "comments": 0,
       "id": 2
     },
     {
-      "userId": "11",
-      "content": "sssss",
-      "date": "2025-03-06T20:55:34.505Z",
+      "userId": "1",
+      "content": "Burger king ou mcdo ? ",
+      "date": "2025-03-07T08:36:32.545Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 3
+    },
+    {
+      "userId": "15",
+      "content": "Nuit blanche sur le tp...",
+      "date": "2025-03-07T08:44:51.387Z",
       "likes": 0,
       "comments": 0,
       "id": 4
     },
     {
-      "userId": "11",
-      "content": "test",
-      "date": "2025-03-07T07:21:39.687Z",
+      "userId": "16",
+      "content": "Qui veut des crêpes ?",
+      "date": "2025-03-07T08:48:11.599Z",
       "likes": 0,
       "comments": 0,
       "id": 5
     },
     {
-      "userId": "11",
-      "content": "hey",
-      "date": "2025-03-07T07:21:49.610Z",
+      "userId": "16",
+      "content": "Pourquoi mon reveil fonctionne jamais ?...",
+      "date": "2025-03-07T08:50:28.496Z",
       "likes": 0,
       "comments": 0,
       "id": 6
     },
     {
-      "userId": "11",
-      "content": "ee",
-      "date": "2025-03-07T07:21:52.968Z",
+      "userId": "17",
+      "content": "Qui veut apprendre react ?? #Hooks #useState #react-router #SPA",
+      "date": "2025-03-07T08:57:04.242Z",
       "likes": 0,
       "comments": 0,
       "id": 7
+    },
+    {
+      "userId": "18",
+      "content": "Vive Marseille ! #Vélodrome",
+      "date": "2025-03-07T08:58:30.148Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 8
     }
   ],
   "follows": [
@@ -141,54 +133,207 @@
       "requestDate": "2025-03-06T20:46:57.268Z",
       "acceptDate": null,
       "id": 1
+    },
+    {
+      "followerId": "17",
+      "followedId": "16",
+      "requestDate": "2025-03-07T08:55:39.214Z",
+      "acceptDate": null,
+      "id": 2
+    },
+    {
+      "followerId": "19",
+      "followedId": "18",
+      "requestDate": "2025-03-07T09:02:32.044Z",
+      "acceptDate": null,
+      "id": 3
+    },
+    {
+      "followerId": "19",
+      "followedId": "16",
+      "requestDate": "2025-03-07T09:02:35.837Z",
+      "acceptDate": null,
+      "id": 4
+    },
+    {
+      "followerId": "19",
+      "followedId": "1",
+      "requestDate": "2025-03-07T09:02:39.897Z",
+      "acceptDate": null,
+      "id": 5
+    },
+    {
+      "followerId": "1",
+      "followedId": "15",
+      "requestDate": "2025-03-07T09:03:02.097Z",
+      "acceptDate": null,
+      "id": 6
     }
   ],
   "comments": [
     {
-      "tweetId": 7,
-      "content": "testt",
-      "userId": "11",
-      "date": "2025-03-07T08:06:06.712Z",
+      "tweetId": 3,
+      "content": "Burger king pour sur !",
+      "userId": "12",
+      "date": "2025-03-07T08:39:42.772Z",
       "id": 1
     },
     {
-      "tweetId": 7,
-      "content": "test123",
-      "userId": "11",
-      "date": "2025-03-07T08:08:37.746Z",
-      "id": 2
-    }
-  ],
-  "likes": [
-    {
       "tweetId": 2,
-      "userId": "11",
+      "content": " Cookie triple chocolats ... merveille du monde #crous #delicieux #crouskie",
+      "userId": "13",
+      "date": "2025-03-07T08:41:57.382Z",
       "id": 2
     },
     {
-      "tweetId": 4,
-      "userId": "11",
+      "tweetId": 1,
+      "content": "Miaule",
+      "userId": "14",
+      "date": "2025-03-07T08:43:14.340Z",
       "id": 3
     },
     {
       "tweetId": 1,
-      "userId": "11",
+      "content": "triple monstre !!!",
+      "userId": "15",
+      "date": "2025-03-07T08:45:36.584Z",
       "id": 4
     },
     {
-      "tweetId": 5,
-      "userId": "11",
+      "tweetId": 4,
+      "content": "Looser j'ai finis en une nuit ! #stimulation #subwaySurfer",
+      "userId": "14",
+      "date": "2025-03-07T08:46:48.065Z",
       "id": 5
     },
     {
-      "tweetId": 7,
-      "userId": "11",
+      "tweetId": 5,
+      "content": "j'ai de la kong strong en échange !",
+      "userId": "14",
+      "date": "2025-03-07T08:49:26.215Z",
+      "id": 6
+    }
+  ],
+  "likes": [
+    {
+      "tweetId": 3,
+      "userId": "12",
+      "id": 1
+    },
+    {
+      "tweetId": 2,
+      "userId": "12",
+      "id": 2
+    },
+    {
+      "tweetId": 3,
+      "userId": "13",
+      "id": 3
+    },
+    {
+      "tweetId": 2,
+      "userId": "13",
+      "id": 4
+    },
+    {
+      "tweetId": 3,
+      "userId": "14",
+      "id": 5
+    },
+    {
+      "tweetId": 1,
+      "userId": "14",
       "id": 6
     },
     {
-      "tweetId": 6,
-      "userId": "11",
+      "tweetId": 3,
+      "userId": "15",
       "id": 7
+    },
+    {
+      "tweetId": 2,
+      "userId": "15",
+      "id": 8
+    },
+    {
+      "tweetId": 1,
+      "userId": "15",
+      "id": 9
+    },
+    {
+      "tweetId": 4,
+      "userId": "16",
+      "id": 10
+    },
+    {
+      "tweetId": 3,
+      "userId": "16",
+      "id": 11
+    },
+    {
+      "tweetId": 5,
+      "userId": "14",
+      "id": 12
+    },
+    {
+      "tweetId": 6,
+      "userId": "16",
+      "id": 13
+    },
+    {
+      "tweetId": 6,
+      "userId": "17",
+      "id": 14
+    },
+    {
+      "tweetId": 5,
+      "userId": "17",
+      "id": 15
+    },
+    {
+      "tweetId": 4,
+      "userId": "17",
+      "id": 16
+    },
+    {
+      "tweetId": 3,
+      "userId": "17",
+      "id": 17
+    },
+    {
+      "tweetId": 7,
+      "userId": "18",
+      "id": 18
+    },
+    {
+      "tweetId": 6,
+      "userId": "18",
+      "id": 19
+    },
+    {
+      "tweetId": 5,
+      "userId": "18",
+      "id": 20
+    },
+    {
+      "tweetId": 3,
+      "userId": "18",
+      "id": 21
+    },
+    {
+      "tweetId": 8,
+      "userId": "18",
+      "id": 22
+    },
+    {
+      "tweetId": 8,
+      "userId": "19",
+      "id": 23
+    },
+    {
+      "tweetId": 3,
+      "userId": "19",
+      "id": 24
     }
   ],
   "notifications": [
@@ -199,50 +344,192 @@
       "isUnfollow": false,
       "status": "abonnement",
       "id": 1
+    },
+    {
+      "followerId": "17",
+      "followedId": "16",
+      "notificationDate": "2025-03-07T08:55:39.224Z",
+      "isUnfollow": false,
+      "status": "abonnement",
+      "id": 2
+    },
+    {
+      "followerId": "19",
+      "followedId": "18",
+      "notificationDate": "2025-03-07T09:02:32.055Z",
+      "isUnfollow": false,
+      "status": "abonnement",
+      "id": 3
+    },
+    {
+      "followerId": "19",
+      "followedId": "16",
+      "notificationDate": "2025-03-07T09:02:35.847Z",
+      "isUnfollow": false,
+      "status": "abonnement",
+      "id": 4
+    },
+    {
+      "followerId": "19",
+      "followedId": "1",
+      "notificationDate": "2025-03-07T09:02:39.908Z",
+      "isUnfollow": false,
+      "status": "abonnement",
+      "id": 5
+    },
+    {
+      "followerId": "1",
+      "followedId": "15",
+      "notificationDate": "2025-03-07T09:03:02.108Z",
+      "isUnfollow": false,
+      "status": "abonnement",
+      "id": 6
     }
   ],
   "notificationsLike": [
     {
-      "tweetId": 1,
-      "userLikeId": "11",
-      "notificationDate": "2025-03-06T20:01:40.368Z",
+      "tweetId": 3,
+      "userLikeId": "12",
+      "notificationDate": "2025-03-07T08:39:30.487Z",
       "id": 1
     },
     {
       "tweetId": 2,
-      "userLikeId": "11",
-      "notificationDate": "2025-03-06T20:26:25.379Z",
+      "userLikeId": "12",
+      "notificationDate": "2025-03-07T08:39:50.315Z",
       "id": 2
     },
     {
-      "tweetId": 4,
-      "userLikeId": "11",
-      "notificationDate": "2025-03-06T20:58:07.791Z",
+      "tweetId": 3,
+      "userLikeId": "13",
+      "notificationDate": "2025-03-07T08:40:19.747Z",
       "id": 3
     },
     {
-      "tweetId": 1,
-      "userLikeId": "11",
-      "notificationDate": "2025-03-07T07:16:07.415Z",
+      "tweetId": 2,
+      "userLikeId": "13",
+      "notificationDate": "2025-03-07T08:40:21.013Z",
       "id": 4
     },
     {
-      "tweetId": 5,
-      "userLikeId": "11",
-      "notificationDate": "2025-03-07T07:21:45.995Z",
+      "tweetId": 3,
+      "userLikeId": "14",
+      "notificationDate": "2025-03-07T08:42:48.564Z",
       "id": 5
     },
     {
-      "tweetId": 7,
-      "userLikeId": "11",
-      "notificationDate": "2025-03-07T07:21:54.697Z",
+      "tweetId": 1,
+      "userLikeId": "14",
+      "notificationDate": "2025-03-07T08:43:21.077Z",
       "id": 6
     },
     {
-      "tweetId": 6,
-      "userLikeId": "11",
-      "notificationDate": "2025-03-07T07:21:55.845Z",
+      "tweetId": 3,
+      "userLikeId": "15",
+      "notificationDate": "2025-03-07T08:45:17.143Z",
       "id": 7
+    },
+    {
+      "tweetId": 2,
+      "userLikeId": "15",
+      "notificationDate": "2025-03-07T08:45:18.436Z",
+      "id": 8
+    },
+    {
+      "tweetId": 1,
+      "userLikeId": "15",
+      "notificationDate": "2025-03-07T08:45:19.471Z",
+      "id": 9
+    },
+    {
+      "tweetId": 4,
+      "userLikeId": "16",
+      "notificationDate": "2025-03-07T08:48:16.058Z",
+      "id": 10
+    },
+    {
+      "tweetId": 3,
+      "userLikeId": "16",
+      "notificationDate": "2025-03-07T08:48:17.450Z",
+      "id": 11
+    },
+    {
+      "tweetId": 5,
+      "userLikeId": "14",
+      "notificationDate": "2025-03-07T08:49:34.052Z",
+      "id": 12
+    },
+    {
+      "tweetId": 6,
+      "userLikeId": "16",
+      "notificationDate": "2025-03-07T08:50:39.073Z",
+      "id": 13
+    },
+    {
+      "tweetId": 6,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-07T08:55:25.728Z",
+      "id": 14
+    },
+    {
+      "tweetId": 5,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-07T08:55:26.586Z",
+      "id": 15
+    },
+    {
+      "tweetId": 4,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-07T08:55:27.643Z",
+      "id": 16
+    },
+    {
+      "tweetId": 3,
+      "userLikeId": "17",
+      "notificationDate": "2025-03-07T08:55:28.868Z",
+      "id": 17
+    },
+    {
+      "tweetId": 7,
+      "userLikeId": "18",
+      "notificationDate": "2025-03-07T08:58:35.780Z",
+      "id": 18
+    },
+    {
+      "tweetId": 6,
+      "userLikeId": "18",
+      "notificationDate": "2025-03-07T08:58:36.941Z",
+      "id": 19
+    },
+    {
+      "tweetId": 5,
+      "userLikeId": "18",
+      "notificationDate": "2025-03-07T08:58:38.123Z",
+      "id": 20
+    },
+    {
+      "tweetId": 3,
+      "userLikeId": "18",
+      "notificationDate": "2025-03-07T08:58:40.820Z",
+      "id": 21
+    },
+    {
+      "tweetId": 8,
+      "userLikeId": "18",
+      "notificationDate": "2025-03-07T09:00:17.205Z",
+      "id": 22
+    },
+    {
+      "tweetId": 8,
+      "userLikeId": "19",
+      "notificationDate": "2025-03-07T09:01:51.924Z",
+      "id": 23
+    },
+    {
+      "tweetId": 3,
+      "userLikeId": "19",
+      "notificationDate": "2025-03-07T09:01:53.490Z",
+      "id": 24
     }
   ]
 }

@@ -70,7 +70,7 @@ function FormRegister() {
 
         try {
             await dispatch(postRegister({ email, password, isStayConnectedToggle }));;
-            window.location.reload();
+            // window.location.reload();
         } catch (error) {
         }
     };

@@ -27,7 +27,7 @@ function ModalPostTweet({ onTweetUpdate }) {
             if (onTweetUpdate) {
                 onTweetUpdate();
             }
-            setTweet(""); // Reset du champ après l'envoi
+            setTweet("");
         } catch (error) {
             console.error("Failed to post tweet:", error);
         } finally {

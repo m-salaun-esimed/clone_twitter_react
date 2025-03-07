@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IoAddOutline } from "react-icons/io5";
 import { Button, Dialog, DialogActions, TextField, Avatar, Typography } from '@mui/material';
 import { CgProfile } from 'react-icons/cg';
-import { addComment, updateTweetAfterComment } from '../store/tweetSlice';
+import { addComment, deleteCommentSlice, updateTweetAfterComment } from '../store/tweetSlice';
+import { FaTrash } from 'react-icons/fa';
 
 function Commentaires({ tweet, userName }) {
     const token = useSelector((state) => state.auth.token);
@@ -40,7 +41,7 @@ function Commentaires({ tweet, userName }) {
 
     const handleAddComment = () => {
         console.log("Nouveau commentaire :", newComment);
-        
+
         dispatch(addComment({ tweetId: tweet.id, content: newComment, userId: userIdSlice }))
             .unwrap()
             .then(() => {
@@ -49,8 +50,22 @@ function Commentaires({ tweet, userName }) {
             .catch((error) => {
                 console.error("Erreur lors de l'ajout du commentaire :", error);
             });
-    
+
         handleClose();
+    };
+
+    const handleDelete = (commentId) => {
+        if (window.confirm('Êtes-vous sûr de vouloir supprimer ce tweet ?')) {
+            console.log("Deleting comment with ID:", commentId);
+            dispatch(deleteCommentSlice({ commentId }))
+            .unwrap()
+            .then(() => {
+                dispatch(updateTweetAfterComment({ tweetId: tweet.id }));
+            })
+            .catch((error) => {
+                console.error("Erreur lors de l'ajout du commentaire :", error);
+            });
+        }
     };
 
     const sortedComments = [...tweet.comments].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -60,22 +75,30 @@ function Commentaires({ tweet, userName }) {
             <div className="mt-3 bg-gray-100 dark:bg-gray-700 p-3 rounded-lg max-h-40 overflow-y-auto">
                 <div className='flex'>
                     <h1>Commentaires : </h1>
-                    <Button color="success" onClick={handleClickOpen}><IoAddOutline className="w-5 h-5"/></Button>
+                    <Button color="success" onClick={handleClickOpen}><IoAddOutline className="w-5 h-5" /></Button>
                 </div>
 
                 {sortedComments.length > 0 ? (
                     sortedComments.map((commentaire, index) => (
-                        <div key={index} className="p-2 border-b border-gray-300 dark:border-gray-600">
-                            <p className="text-black dark:text-white text-sm">
-                                {commentUsers[commentaire.userId] || 'Chargement...'}
-                            </p>
-                            <p className="text-black dark:text-white text-sm">{commentaire.content}</p>
+                        <div key={index} className="p-2 border-b border-gray-300 dark:border-gray-600 flex justify-between items-center">
+                            <div className="flex-1">
+                                <p className="text-black dark:text-white text-sm">
+                                    {commentUsers[commentaire.userId] || 'Chargement...'}
+                                </p>
+                                <p className="text-black dark:text-white text-sm">{commentaire.content}</p>
+                            </div>
+                            {commentaire.userId === userIdSlice && (
+                                <button onClick={() => handleDelete(commentaire.id)} className="text-red-500 hover:text-red-700">
+                                    <FaTrash size={20} />
+                                </button>
+                            )}
                         </div>
                     ))
                 ) : (
                     <p className="text-gray-500 dark:text-gray-400 text-sm">Aucun commentaire pour l'instant.</p>
                 )}
             </div>
+
 
             <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth sx={{ '& .MuiDialog-paper': { backgroundColor: 'black', color: 'white' } }}>
                 <div className="p-4">

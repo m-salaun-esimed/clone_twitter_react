@@ -17,7 +17,7 @@ const getRecentTweets = async (token) => {
 
 const getTopLikedTweets = async (token) => {
     try {
-        const response = await api.get('tweets?_embed=comments', {
+        const response = await api.get('tweets?_embed=likes&_embed=comments', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
