@@ -220,6 +220,20 @@
       "userId": "14",
       "date": "2025-03-07T08:49:26.215Z",
       "id": 6
+    },
+    {
+      "tweetId": 7,
+      "content": "Le lien ne fonctionne pas !",
+      "userId": "1",
+      "date": "2025-03-07T10:11:33.046Z",
+      "id": 7
+    },
+    {
+      "tweetId": 8,
+      "content": "Allez Paris !!",
+      "userId": "1",
+      "date": "2025-03-07T10:12:34.164Z",
+      "id": 8
     }
   ],
   "likes": [
@@ -367,6 +381,16 @@
       "tweetId": 5,
       "userId": "1",
       "id": 29
+    },
+    {
+      "tweetId": 9,
+      "userId": "1",
+      "id": 30
+    },
+    {
+      "tweetId": 2,
+      "userId": "1",
+      "id": 31
     }
   ],
   "notifications": [
@@ -593,6 +617,18 @@
       "userLikeId": "1",
       "notificationDate": "2025-03-07T09:45:44.039Z",
       "id": 29
+    },
+    {
+      "tweetId": 9,
+      "userLikeId": "1",
+      "notificationDate": "2025-03-07T10:05:09.142Z",
+      "id": 30
+    },
+    {
+      "tweetId": 2,
+      "userLikeId": "1",
+      "notificationDate": "2025-03-07T10:19:09.610Z",
+      "id": 31
     }
   ]
 }

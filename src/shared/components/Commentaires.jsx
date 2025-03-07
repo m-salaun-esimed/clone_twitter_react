@@ -6,6 +6,7 @@ import { Button, Dialog, DialogActions, TextField, Avatar, Typography } from '@m
 import { CgProfile } from 'react-icons/cg';
 import { addComment, deleteCommentSlice, updateTweetAfterComment } from '../store/tweetSlice';
 import { FaTrash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; // Import de useNavigate
 
 function Commentaires({ tweet, userName }) {
     const token = useSelector((state) => state.auth.token);
@@ -14,6 +15,7 @@ function Commentaires({ tweet, userName }) {
     const [open, setOpen] = useState(false);
     const [newComment, setNewComment] = useState("");
     const dispatch = useDispatch();
+    const navigate = useNavigate(); // Déclaration de navigate
 
     useEffect(() => {
         const fetchNames = async () => {
@@ -68,6 +70,11 @@ function Commentaires({ tweet, userName }) {
         }
     };
 
+    // Fonction pour rediriger vers le profil
+    const showProfil = (userId) => {
+        navigate(`/profile/${userId}`);
+    }
+
     const sortedComments = [...tweet.comments].sort((a, b) => new Date(b.date) - new Date(a.date));
 
     return (
@@ -83,7 +90,9 @@ function Commentaires({ tweet, userName }) {
                         <div key={index} className="p-2 border-b border-gray-300 dark:border-gray-600 flex justify-between items-center">
                             <div className="flex-1">
                                 <p className="text-black dark:text-white text-sm">
-                                    {commentUsers[commentaire.userId] || 'Chargement...'}
+                                    <Button onClick={() => showProfil(commentaire.userId)}> {/* Ajout de la fonction avec l'ID utilisateur */}
+                                        {commentUsers[commentaire.userId] || 'Chargement...'}
+                                    </Button>
                                 </p>
                                 <p className="text-black dark:text-white text-sm">{commentaire.content}</p>
                             </div>
@@ -98,7 +107,6 @@ function Commentaires({ tweet, userName }) {
                     <p className="text-gray-500 dark:text-gray-400 text-sm">Aucun commentaire pour l'instant.</p>
                 )}
             </div>
-
 
             <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth sx={{ '& .MuiDialog-paper': { backgroundColor: 'black', color: 'white' } }}>
                 <div className="p-4">
