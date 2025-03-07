@@ -111,7 +111,7 @@
     },
     {
       "userId": "17",
-      "content": "Qui veut apprendre react ?? #Hooks #useState #react-router #SPA",
+      "content": "Qui veut apprendre react ?? #Hooks #useState #react-router #SPA\ntuto 4h : https://www.youtube.com/watch?v=eKYkDqHohrw",
       "date": "2025-03-07T08:57:04.242Z",
       "likes": 0,
       "comments": 0,
@@ -124,6 +124,14 @@
       "likes": 0,
       "comments": 0,
       "id": 8
+    },
+    {
+      "userId": "1",
+      "content": "nouvelle fonctionnalité les emojis ! 🤩🦾",
+      "date": "2025-03-07T10:00:28.826Z",
+      "likes": 0,
+      "comments": 0,
+      "id": 9
     }
   ],
   "follows": [
@@ -334,6 +342,31 @@
       "tweetId": 3,
       "userId": "19",
       "id": 24
+    },
+    {
+      "tweetId": 8,
+      "userId": "1",
+      "id": 25
+    },
+    {
+      "tweetId": 3,
+      "userId": "1",
+      "id": 26
+    },
+    {
+      "tweetId": 6,
+      "userId": "1",
+      "id": 27
+    },
+    {
+      "tweetId": 7,
+      "userId": "1",
+      "id": 28
+    },
+    {
+      "tweetId": 5,
+      "userId": "1",
+      "id": 29
     }
   ],
   "notifications": [
@@ -530,6 +563,36 @@
       "userLikeId": "19",
       "notificationDate": "2025-03-07T09:01:53.490Z",
       "id": 24
+    },
+    {
+      "tweetId": 8,
+      "userLikeId": "1",
+      "notificationDate": "2025-03-07T09:39:18.551Z",
+      "id": 25
+    },
+    {
+      "tweetId": 3,
+      "userLikeId": "1",
+      "notificationDate": "2025-03-07T09:39:21.387Z",
+      "id": 26
+    },
+    {
+      "tweetId": 6,
+      "userLikeId": "1",
+      "notificationDate": "2025-03-07T09:42:53.028Z",
+      "id": 27
+    },
+    {
+      "tweetId": 7,
+      "userLikeId": "1",
+      "notificationDate": "2025-03-07T09:45:41.611Z",
+      "id": 28
+    },
+    {
+      "tweetId": 5,
+      "userLikeId": "1",
+      "notificationDate": "2025-03-07T09:45:44.039Z",
+      "id": 29
     }
   ]
 }

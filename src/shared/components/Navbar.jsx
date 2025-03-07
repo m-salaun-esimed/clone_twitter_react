@@ -23,8 +23,24 @@ const NavBar = () => {
         </svg>
       </button>
 
-      <aside className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${isOpen ? "translate-x-0" : "-translate-x-full"} sm:translate-x-0 bg-gray-50 dark:bg-black`} aria-label="Sidebar">
+      <aside
+        className={`z-1000 fixed top-0 left-0 w-64 h-screen transition-transform ${isOpen ? "translate-x-0" : "-translate-x-full"} sm:translate-x-0 bg-gray-50 dark:bg-black`}
+        aria-label="Sidebar"
+      >
         <div className="h-full px-3 py-4 overflow-y-auto">
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute top-4 right-4 p-2 text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          >
+            <span className="sr-only">Close sidebar</span>
+            <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                clipRule="evenodd"
+                fillRule="evenodd"
+                d="M6.293 4.293a1 1 0 011.414 0L10 6.586l2.293-2.293a1 1 0 111.414 1.414L11.414 8l2.293 2.293a1 1 0 11-1.414 1.414L10 9.414l-2.293 2.293a1 1 0 11-1.414-1.414L8.586 8 6.293 5.707a1 1 0 010-1.414z"
+              />
+            </svg>
+          </button>
           <ul className="space-y-2 font-medium">
             <li>
               <a
@@ -36,7 +52,6 @@ const NavBar = () => {
                   className="w-16 h-auto mb-4 mx-auto block"
                   alt="Logo"
                 />
-
               </a>
             </li>
             <li>
@@ -53,7 +68,6 @@ const NavBar = () => {
                 <IoNotificationsOutline />
                 <span className="ms-3">Notifications</span>
               </NavLink>
-
             </li>
             <li>
               <NavLink
