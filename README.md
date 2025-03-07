@@ -10,7 +10,7 @@ Ce projet est une application web développée en React, reproduisant les foncti
 - **CRUD sur les tweets** : Création, lecture, mise à jour et suppression de tweets en temps réel.
 - **Follow/Followers** : Possibilité de suivre un utilisateur et de voir la liste de ses abonnés.
 - **Notifications** : Système de notifications pour les nouveaux abonnés et les likes sur les tweets.
-- **Retweets et commentaires** (Bonus) : Fonctionnalité de retweet, possibilité de commenter les tweets et de liker les commentaires.
+- **Retweets et commentaires** (Bonus) : Fonctionnalité de retweet, possibilité de commenter les tweets et de liker les commentaires. Non fait
 
 ## Technologies utilisées
 
