@@ -151,10 +151,11 @@ function Tweet({ tweet, onTweetUpdate }) {
 
                         <div className="flex items-center space-x-1">
                             <Button onClick={showCommentaireComponents}>
-                                <FaRegCommentDots className="w-6 h-6"/>
-                                <span>{formatNumber(tweet.comments.length)}</span>
+                                <FaRegCommentDots className="w-6 h-6" />
+                                <span className="ml-2">{formatNumber(tweet.comments.length)}</span>
                             </Button>
                         </div>
+
 
                         {userIdSlice === tweet.userId && (
                             <div className="flex space-x-2">
@@ -169,7 +170,7 @@ function Tweet({ tweet, onTweetUpdate }) {
                     </div>
                     <div>
                         {showComments && (
-                           <Commentaires tweet={tweet} userName={userName}/>
+                            <Commentaires tweet={tweet} userName={userName} />
                         )}
                     </div>
                 </div>
