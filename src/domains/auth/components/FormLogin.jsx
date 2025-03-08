@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { postLogin } from "../slice.js";
 import { showToastError } from "../../../utils/Toast.jsx";
-import { ToastContainer } from "react-toastify";
 
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
@@ -13,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Switch from '@mui/material/Switch';
+import ToastContainerUi from "../../../ui/ToastContainerUi.jsx";
 
 function FormLogin() {
     const [email, setEmail] = useState("");
@@ -50,13 +50,8 @@ function FormLogin() {
             );
             return;
         }
-
-        try {
-            await dispatch(postLogin({ trimmedEmail, trimmedPassword, isStayConnectedToggle }));
-        } catch (error) {
-            showToastError("Échec de la connexion. Vérifiez vos identifiants.");
-            console.error("Login error:", error);
-        }
+        
+        await dispatch(postLogin({ trimmedEmail, trimmedPassword, isStayConnectedToggle }));
     };
 
 
@@ -66,18 +61,7 @@ function FormLogin() {
 
     return (
         <div>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick={false}
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
+            <ToastContainerUi/>
             <form onSubmit={handleSubmit}>
                 <div className="flex justify-center mb-4">
                     <FormControl variant="outlined" fullWidth>
