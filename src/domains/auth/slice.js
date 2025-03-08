@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { jwtDecode } from 'jwt-decode';
 import { loginApi, registerApi } from './service.js';
+import { showToastError } from '../../utils/Toast.jsx';
 
 export const postLogin = createAsyncThunk(
     'auth/postLogin',
@@ -12,6 +13,8 @@ export const postLogin = createAsyncThunk(
                 isStayConnected: isStayConnectedToggle
             };
         } catch (error) {
+            console.log("message : ", error.message);
+            showToastError(error.response?.data || error.message);
             return rejectWithValue(error.response?.data || "Erreur inconnue");
         }
     }
@@ -27,6 +30,7 @@ export const postRegister = createAsyncThunk(
                 isStayConnected: isStayConnectedToggle
             };
         } catch (error) {
+            showToastError(error.response?.data || error.message);
             return rejectWithValue(error.response?.data || "Erreur inconnue");
         }
     }
