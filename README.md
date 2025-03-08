@@ -2,6 +2,8 @@
 
 Ce projet est une application web développée en React, reproduisant les fonctionnalités essentielles de Twitter. Il permet aux utilisateurs de publier des tweets, suivre d'autres utilisateurs, aimer des publications et recevoir des notifications.
 
+...Une deuxime verison est en cours avec l'utilisation correct de json-serveur, du store de redux, ainsi qu'une meilleure architecture...
+
 ## Fonctionnalités principales
 
 - **Authentification** : Inscription et connexion avec une base de données locale (`json-server-auth`), validation des champs et gestion des erreurs.
