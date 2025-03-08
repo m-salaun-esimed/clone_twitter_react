@@ -58,6 +58,18 @@
       "password": "$2a$10$xVtAEmkoQShwwHyqYmjYPO/qE5/c5T742byCmkkt5DXAlJExpiN.C",
       "date": "2025-03-07T09:01:35.878Z",
       "id": 19
+    },
+    {
+      "email": "test10@gmail.com",
+      "password": "$2a$10$2ixReZt3IfTonTcp2MxNd.wGKwCzZUTV7rjpvQVcfNiP9W1StVaMa",
+      "date": "2025-03-08T15:27:40.153Z",
+      "id": 20
+    },
+    {
+      "email": "e@e.com",
+      "password": "$2a$10$ZT0fxQGBzmA.FZarWrR5wOL2Z7wpzSifeT5Eon52mX6SjxaS4FCa6",
+      "date": "2025-03-08T15:31:07.272Z",
+      "id": 21
     }
   ],
   "tweets": [
